@@ -1,0 +1,92 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-17T20:57:44Z",
+    "since_utc": "2026-02-17T20:57:24Z",
+    "iteration_key": "2026-02-17:10",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 2,
+        "commits": 2,
+        "files_changed": 7,
+        "insertions": 38,
+        "deletions": 19,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "backend API and service logic",
+            "count": 4
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 3
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 5,
+            "insertions": 36,
+            "deletions": 17,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 5 files (+36/-17).",
+            "proof_ids": [
+                "proof-2026-02-17-10-architect-commits-1",
+                "proof-2026-02-17-10-architect-files-5",
+                "proof-2026-02-17-10-architect-surface-php",
+                "proof-2026-02-17-10-architect-surface-none"
+            ],
+            "confidence": 0.58,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 4
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 2,
+            "deletions": 2,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 2 files (+2/-2).",
+            "proof_ids": [
+                "proof-2026-02-17-10-neo-commits-1",
+                "proof-2026-02-17-10-neo-files-2",
+                "proof-2026-02-17-10-neo-surface-none"
+            ],
+            "confidence": 0.54,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 2
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
