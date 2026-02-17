@@ -1,0 +1,68 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-17T19:33:07Z",
+    "since_utc": "2026-02-17T19:33:04Z",
+    "iteration_key": "2026-02-17:8",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 1,
+        "commits": 1,
+        "files_changed": 6,
+        "insertions": 78,
+        "deletions": 143,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "technical documentation and governance",
+            "count": 4
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 6,
+            "insertions": 78,
+            "deletions": 143,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 1 commits and 6 files (+78/-143).",
+            "proof_ids": [
+                "proof-2026-02-17-8-neo-commits-1",
+                "proof-2026-02-17-8-neo-files-6",
+                "proof-2026-02-17-8-neo-surface-md",
+                "proof-2026-02-17-8-neo-surface-none"
+            ],
+            "confidence": 0.59,
+            "extensions": [
+                {
+                    "name": "md",
+                    "count": 4
+                },
+                {
+                    "name": "none",
+                    "count": 2
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
