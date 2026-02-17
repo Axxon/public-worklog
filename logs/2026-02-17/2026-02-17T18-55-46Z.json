@@ -1,0 +1,156 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-17T18:55:46Z",
+    "since_utc": "2026-02-17T15:40:19Z",
+    "iteration_key": "2026-02-17:6",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 3,
+        "commits": 13,
+        "files_changed": 86,
+        "insertions": 2968,
+        "deletions": 564,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "technical documentation and governance",
+            "count": 23
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 21
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 18
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 15
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 8
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 6,
+            "files_changed": 51,
+            "insertions": 850,
+            "deletions": 84,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 6 commits and 51 files (+850/-84).",
+            "proof_ids": [
+                "proof-2026-02-17-6-neo-commits-6",
+                "proof-2026-02-17-6-neo-files-51",
+                "proof-2026-02-17-6-neo-surface-md",
+                "proof-2026-02-17-6-neo-surface-none",
+                "proof-2026-02-17-6-neo-surface-sh"
+            ],
+            "confidence": 0.93,
+            "extensions": [
+                {
+                    "name": "md",
+                    "count": 22
+                },
+                {
+                    "name": "none",
+                    "count": 21
+                },
+                {
+                    "name": "sh",
+                    "count": 6
+                },
+                {
+                    "name": "yml",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 4,
+            "files_changed": 18,
+            "insertions": 1002,
+            "deletions": 386,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 4 commits and 18 files (+1002/-386).",
+            "proof_ids": [
+                "proof-2026-02-17-6-keymaker-commits-4",
+                "proof-2026-02-17-6-keymaker-files-18",
+                "proof-2026-02-17-6-keymaker-surface-vue",
+                "proof-2026-02-17-6-keymaker-surface-ts"
+            ],
+            "confidence": 0.84,
+            "extensions": [
+                {
+                    "name": "vue",
+                    "count": 11
+                },
+                {
+                    "name": "ts",
+                    "count": 7
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 3,
+            "files_changed": 17,
+            "insertions": 1116,
+            "deletions": 94,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 3 commits and 17 files (+1116/-94).",
+            "proof_ids": [
+                "proof-2026-02-17-6-architect-commits-3",
+                "proof-2026-02-17-6-architect-files-17",
+                "proof-2026-02-17-6-architect-surface-php",
+                "proof-2026-02-17-6-architect-surface-md",
+                "proof-2026-02-17-6-architect-surface-testing"
+            ],
+            "confidence": 0.8,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 15
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                },
+                {
+                    "name": "testing",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
