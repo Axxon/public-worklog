@@ -273,6 +273,190 @@
       margin-top: 3px;
     }
 
+    .muted {
+      color: var(--muted);
+    }
+
+    .summary-panel {
+      margin-top: 12px;
+      padding: 12px;
+      animation: rise 760ms ease-out both;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .summary-block {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(10, 24, 38, 0.56);
+    }
+
+    .summary-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(158, 180, 204, 0.18);
+    }
+
+    .summary-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .summary-name {
+      max-width: 70%;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .summary-value {
+      font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .run-row {
+      cursor: pointer;
+      transition: background-color 120ms ease;
+    }
+
+    .run-row:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: -2px;
+    }
+
+    .run-row.is-selected {
+      background: rgba(0, 191, 166, 0.12);
+    }
+
+    .text-compact {
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .detail-panel {
+      margin-top: 12px;
+      padding: 14px;
+      animation: rise 860ms ease-out both;
+    }
+
+    .detail-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .detail-title {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+    }
+
+    .detail-meta {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 12px;
+    }
+
+    .detail-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(10, 24, 38, 0.56);
+      padding: 10px;
+    }
+
+    .detail-card-title {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .area-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(158, 180, 204, 0.18);
+      font-size: 0.88rem;
+    }
+
+    .area-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .project-box {
+      border: 1px solid rgba(158, 180, 204, 0.18);
+      border-radius: 10px;
+      padding: 9px;
+      margin-bottom: 8px;
+      background: rgba(6, 19, 32, 0.52);
+    }
+
+    .project-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .project-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .project-metrics {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .project-line {
+      margin: 0 0 4px;
+      font-size: 0.84rem;
+      line-height: 1.35;
+      color: rgba(232, 242, 255, 0.93);
+    }
+
+    .project-line:last-child {
+      margin-bottom: 0;
+    }
+
     @keyframes rise {
       from {
         opacity: 0;
@@ -288,6 +472,10 @@
       .kpi-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .summary-grid,
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -302,6 +490,9 @@
       }
       svg {
         min-height: 265px;
+      }
+      table {
+        min-width: 980px;
       }
     }
   </style>
@@ -319,7 +510,7 @@
           <select id="metricSelect">
             <option value="commits">Commits</option>
             <option value="files_changed">Files Changed</option>
-            <option value="insertions">Insertions</option>
+            <option value="insertions" selected>Insertions</option>
             <option value="deletions">Deletions</option>
             <option value="repos_touched">Repos Touched</option>
             <option value="binary_files">Binary Files</option>
@@ -333,6 +524,18 @@
             <option value="90">Last 90 Days</option>
             <option value="30">Last 30 Days</option>
             <option value="7">Last 7 Days</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="projectSelect">Project</label>
+          <select id="projectSelect">
+            <option value="all">All Projects</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="areaSelect">Technical Area</label>
+          <select id="areaSelect">
+            <option value="all">All Areas</option>
           </select>
         </div>
       </section>
@@ -366,7 +569,20 @@
           <div class="tooltip-metric" id="tooltipMetric"></div>
         </aside>
       </div>
-      <p class="chart-hint" id="chartHint">Hover a data point to inspect one run.</p>
+      <p class="chart-hint" id="chartHint">Hover or click a data point to inspect one run.</p>
+    </section>
+
+    <section class="panel summary-panel">
+      <div class="summary-grid">
+        <article class="summary-block">
+          <div class="summary-title">Top Technical Areas (Filtered)</div>
+          <div id="areasSummary" class="muted text-compact">Loading...</div>
+        </article>
+        <article class="summary-block">
+          <div class="summary-title">Top Projects (Filtered)</div>
+          <div id="projectsSummary" class="muted text-compact">Loading...</div>
+        </article>
+      </div>
     </section>
 
     <section class="panel table-panel">
@@ -380,11 +596,29 @@
               <th>Files</th>
               <th>Insertions</th>
               <th>Deletions</th>
+              <th>Technical Areas</th>
               <th>Projects</th>
             </tr>
           </thead>
           <tbody id="runsTable"></tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="panel detail-panel">
+      <div class="detail-head">
+        <h2 class="detail-title">Run JSON Details</h2>
+        <div class="detail-meta" id="detailMeta">Click a chart point or a table row.</div>
+      </div>
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h3 class="detail-card-title">Technical Areas</h3>
+          <div id="detailAreas" class="muted text-compact">No run selected.</div>
+        </article>
+        <article class="detail-card">
+          <h3 class="detail-card-title">Projects</h3>
+          <div id="detailProjects" class="muted text-compact">No run selected.</div>
+        </article>
       </div>
     </section>
 
@@ -403,9 +637,12 @@
     };
 
     let allPoints = [];
+    let selectedPoint = null;
 
     const metricSelect = document.getElementById("metricSelect");
     const windowSelect = document.getElementById("windowSelect");
+    const projectSelect = document.getElementById("projectSelect");
+    const areaSelect = document.getElementById("areaSelect");
     const chart = document.getElementById("timelineChart");
     const chartFrame = document.getElementById("chartFrame");
     const chartHint = document.getElementById("chartHint");
@@ -421,6 +658,11 @@
     const kpiProjects = document.getElementById("kpiProjects");
     const metaInfo = document.getElementById("metaInfo");
     const runsTable = document.getElementById("runsTable");
+    const areasSummary = document.getElementById("areasSummary");
+    const projectsSummary = document.getElementById("projectsSummary");
+    const detailMeta = document.getElementById("detailMeta");
+    const detailAreas = document.getElementById("detailAreas");
+    const detailProjects = document.getElementById("detailProjects");
 
     function showError(message) {
       errorBox.textContent = message;
@@ -475,6 +717,99 @@
       }).format(date);
     }
 
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function shortText(value, max = 190) {
+      if (typeof value !== "string") {
+        return "";
+      }
+      if (value.length <= max) {
+        return value;
+      }
+      return value.slice(0, max - 3) + "...";
+    }
+
+    function runKey(point) {
+      const iteration = point && point.iteration_key ? point.iteration_key : "";
+      const generatedAt = point && point.generated_at_utc ? point.generated_at_utc : "";
+      return `${iteration}__${generatedAt}`;
+    }
+
+    function sameRun(a, b) {
+      if (!a || !b) {
+        return false;
+      }
+      return runKey(a) === runKey(b);
+    }
+
+    function readProjectNames(point) {
+      if (point.project_details.length > 0) {
+        return point.project_details.map((project) => project.code_name);
+      }
+      return point.projects;
+    }
+
+    function readAreaNames(point) {
+      if (point.technical_areas.length > 0) {
+        return point.technical_areas.map((area) => area.name);
+      }
+      return point.project_details
+        .map((project) => project.dominant_area)
+        .filter((name) => typeof name === "string" && name !== "");
+    }
+
+    function fillSelectOptions(selectEl, values, allLabel) {
+      const current = selectEl.value || "all";
+      selectEl.innerHTML = "";
+      const allOption = document.createElement("option");
+      allOption.value = "all";
+      allOption.textContent = allLabel;
+      selectEl.appendChild(allOption);
+
+      values.forEach((value) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        selectEl.appendChild(option);
+      });
+
+      if ([...selectEl.options].some((option) => option.value === current)) {
+        selectEl.value = current;
+      } else {
+        selectEl.value = "all";
+      }
+    }
+
+    function buildFacetOptions(points) {
+      const projectSet = new Set();
+      const areaSet = new Set();
+
+      points.forEach((point) => {
+        readProjectNames(point).forEach((name) => {
+          if (typeof name === "string" && name !== "") {
+            projectSet.add(name);
+          }
+        });
+        readAreaNames(point).forEach((name) => {
+          if (typeof name === "string" && name !== "") {
+            areaSet.add(name);
+          }
+        });
+      });
+
+      const projects = [...projectSet].sort((a, b) => a.localeCompare(b));
+      const areas = [...areaSet].sort((a, b) => a.localeCompare(b));
+      fillSelectOptions(projectSelect, projects, "All Projects");
+      fillSelectOptions(areaSelect, areas, "All Areas");
+    }
+
     function toSafePath(path) {
       if (typeof path !== "string") {
         return null;
@@ -512,6 +847,20 @@
       const maxTs = points[points.length - 1].ts;
       const fromTs = maxTs - (days * 24 * 60 * 60 * 1000);
       return points.filter((point) => point.ts >= fromTs);
+    }
+
+    function applyFacetFilters(points) {
+      const selectedProject = projectSelect.value;
+      const selectedArea = areaSelect.value;
+
+      return points.filter((point) => {
+        const projects = readProjectNames(point);
+        const areas = readAreaNames(point);
+
+        const projectOk = selectedProject === "all" || projects.includes(selectedProject);
+        const areaOk = selectedArea === "all" || areas.includes(selectedArea);
+        return projectOk && areaOk;
+      });
     }
 
     function getMetricValue(point, key) {
@@ -552,20 +901,221 @@
       kpiProjects.textContent = formatNum(projectSet.size);
     }
 
+    function aggregateTechnicalAreas(points) {
+      const totals = new Map();
+      points.forEach((point) => {
+        if (point.technical_areas.length > 0) {
+          point.technical_areas.forEach((area) => {
+            const previous = totals.get(area.name) || 0;
+            totals.set(area.name, previous + asNumber(area.count));
+          });
+        } else {
+          point.project_details.forEach((project) => {
+            if (!project.dominant_area) {
+              return;
+            }
+            const previous = totals.get(project.dominant_area) || 0;
+            totals.set(project.dominant_area, previous + 1);
+          });
+        }
+      });
+      return [...totals.entries()]
+        .map(([name, count]) => ({ name, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8);
+    }
+
+    function aggregateProjects(points) {
+      const totals = new Map();
+      points.forEach((point) => {
+        if (point.project_details.length > 0) {
+          point.project_details.forEach((project) => {
+            const key = project.code_name;
+            const base = totals.get(key) || {
+              code_name: key,
+              runs: 0,
+              commits: 0,
+              files_changed: 0,
+              insertions: 0,
+              deletions: 0
+            };
+            base.runs += 1;
+            base.commits += asNumber(project.commits);
+            base.files_changed += asNumber(project.files_changed);
+            base.insertions += asNumber(project.insertions);
+            base.deletions += asNumber(project.deletions);
+            totals.set(key, base);
+          });
+          return;
+        }
+        point.projects.forEach((projectName) => {
+          const base = totals.get(projectName) || {
+            code_name: projectName,
+            runs: 0,
+            commits: 0,
+            files_changed: 0,
+            insertions: 0,
+            deletions: 0
+          };
+          base.runs += 1;
+          totals.set(projectName, base);
+        });
+      });
+      return [...totals.values()]
+        .sort((a, b) => {
+          if (b.files_changed !== a.files_changed) {
+            return b.files_changed - a.files_changed;
+          }
+          if (b.commits !== a.commits) {
+            return b.commits - a.commits;
+          }
+          return b.runs - a.runs;
+        })
+        .slice(0, 8);
+    }
+
+    function renderSummaryBlocks(points) {
+      const topAreas = aggregateTechnicalAreas(points);
+      const topProjects = aggregateProjects(points);
+
+      if (topAreas.length === 0) {
+        areasSummary.innerHTML = `<span class="muted">No technical area data.</span>`;
+      } else {
+        areasSummary.innerHTML = topAreas.map((area) => `
+          <div class="summary-item">
+            <span class="summary-name">${escapeHtml(area.name)}</span>
+            <span class="summary-value">${formatNum(area.count)}</span>
+          </div>
+        `).join("");
+      }
+
+      if (topProjects.length === 0) {
+        projectsSummary.innerHTML = `<span class="muted">No project data.</span>`;
+      } else {
+        projectsSummary.innerHTML = topProjects.map((project) => `
+          <div class="summary-item">
+            <span class="summary-name">${escapeHtml(project.code_name)} <span class="muted">(runs: ${formatNum(project.runs)})</span></span>
+            <span class="summary-value">f${formatNum(project.files_changed)} c${formatNum(project.commits)}</span>
+          </div>
+        `).join("");
+      }
+    }
+
+    function renderRunDetails(point) {
+      if (!point) {
+        detailMeta.textContent = "Click a chart point or a table row.";
+        detailAreas.innerHTML = `<span class="muted">No run selected.</span>`;
+        detailProjects.innerHTML = `<span class="muted">No run selected.</span>`;
+        return;
+      }
+
+      detailMeta.textContent = `${point.iteration_key || "run"} • ${formatDateUtc(point.generated_at_utc)}`;
+
+      if (point.technical_areas.length === 0) {
+        detailAreas.innerHTML = `<span class="muted">No technical area details in this JSON run.</span>`;
+      } else {
+        detailAreas.innerHTML = point.technical_areas.map((area) => `
+          <div class="area-row">
+            <span>${escapeHtml(area.name)}</span>
+            <strong>${formatNum(area.count)}</strong>
+          </div>
+        `).join("");
+      }
+
+      if (point.project_details.length === 0) {
+        if (point.projects.length === 0) {
+          detailProjects.innerHTML = `<span class="muted">No project details in this JSON run.</span>`;
+        } else {
+          detailProjects.innerHTML = point.projects
+            .map((name) => `<span class="chip">${escapeHtml(name)}</span>`)
+            .join("");
+        }
+        return;
+      }
+
+      detailProjects.innerHTML = point.project_details.map((project) => {
+        const confidence = typeof project.confidence === "number"
+          ? ` • conf ${project.confidence.toFixed(2)}`
+          : "";
+        const extensions = project.extensions.length > 0
+          ? `Extensions: ${project.extensions.map((ext) => `${escapeHtml(ext.name)}(${formatNum(ext.count)})`).join(", ")}`
+          : "Extensions: -";
+
+        return `
+          <article class="project-box">
+            <div class="project-head">
+              <div class="project-name">${escapeHtml(project.code_name)}</div>
+              <div class="project-metrics">
+                c${formatNum(project.commits)} • f${formatNum(project.files_changed)}<br>
+                +${formatNum(project.insertions)} / -${formatNum(project.deletions)}${confidence}
+              </div>
+            </div>
+            <p class="project-line"><strong>Area:</strong> ${escapeHtml(project.dominant_area || "-")}</p>
+            <p class="project-line"><strong>Problem:</strong> ${escapeHtml(shortText(project.problem || "-"))}</p>
+            <p class="project-line"><strong>Action:</strong> ${escapeHtml(shortText(project.action || "-"))}</p>
+            <p class="project-line"><strong>Outcome:</strong> ${escapeHtml(shortText(project.outcome || "-"))}</p>
+            <p class="project-line"><strong>${extensions}</strong></p>
+          </article>
+        `;
+      }).join("");
+    }
+
     function renderTable(points) {
       runsTable.textContent = "";
       const sorted = [...points].sort((a, b) => b.ts - a.ts);
       sorted.forEach((point) => {
+        const areaPreview = point.technical_areas.length > 0
+          ? point.technical_areas
+            .slice(0, 2)
+            .map((area) => `${escapeHtml(area.name)} (${formatNum(area.count)})`)
+            .join("<br>")
+          : '<span class="muted">-</span>';
+
+        let projectsPreview = point.project_details.length > 0
+          ? point.project_details
+            .slice(0, 2)
+            .map((project) => `
+              <div class="text-compact">
+                <strong>${escapeHtml(project.code_name)}</strong>
+                c${formatNum(project.commits)} • f${formatNum(project.files_changed)} • +${formatNum(project.insertions)}/-${formatNum(project.deletions)}
+              </div>
+            `)
+            .join("")
+          : point.projects
+            .slice(0, 3)
+            .map((name) => `<span class="chip">${escapeHtml(name)}</span>`)
+            .join("");
+        if (projectsPreview === "") {
+          projectsPreview = '<span class="muted">-</span>';
+        }
+
         const row = document.createElement("tr");
+        row.className = "run-row";
+        row.tabIndex = 0;
+        if (sameRun(point, selectedPoint)) {
+          row.classList.add("is-selected");
+        }
         row.innerHTML = `
-          <td>${formatDateUtc(point.generated_at_utc)}</td>
-          <td>${point.iteration_key || "-"}</td>
+          <td>${escapeHtml(formatDateUtc(point.generated_at_utc))}</td>
+          <td>${escapeHtml(point.iteration_key || "-")}</td>
           <td>${formatNum(point.metrics.commits)}</td>
           <td>${formatNum(point.metrics.files_changed)}</td>
           <td>${formatNum(point.metrics.insertions)}</td>
           <td>${formatNum(point.metrics.deletions)}</td>
-          <td>${point.projects.slice(0, 3).map((name) => `<span class="chip">${name}</span>`).join("")}</td>
+          <td class="text-compact">${areaPreview}</td>
+          <td>${projectsPreview}</td>
         `;
+        row.addEventListener("click", () => {
+          selectedPoint = point;
+          rerender();
+        });
+        row.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            selectedPoint = point;
+            rerender();
+          }
+        });
         runsTable.appendChild(row);
       });
     }
@@ -597,6 +1147,11 @@
       circle.addEventListener("pointerenter", onEnter);
       circle.addEventListener("pointermove", onMove);
       circle.addEventListener("pointerleave", onLeave);
+      circle.addEventListener("click", () => {
+        selectedPoint = point;
+        rerender();
+      });
+      circle.style.cursor = "pointer";
     }
 
     function renderChart(points, metricKey) {
@@ -716,13 +1271,14 @@
 
       mapped.forEach((mappedPoint, index) => {
         const point = dataset[index];
+        const isSelected = sameRun(point, selectedPoint);
         const circle = createSvg("circle", {
           cx: mappedPoint.x,
           cy: mappedPoint.y,
-          r: "5",
+          r: isSelected ? "7" : "5",
           fill: metricMeta.color,
           stroke: "#071520",
-          "stroke-width": "2"
+          "stroke-width": isSelected ? "3" : "2"
         });
         bindPointTooltip(circle, point, metricKey);
         chart.appendChild(circle);
@@ -739,17 +1295,84 @@
         return null;
       }
       const totals = run.totals || {};
-      const projects = Array.isArray(run.projects)
-        ? run.projects.map((project) => project.code_name).filter((name) => typeof name === "string" && name !== "")
-        : Array.isArray(entry.projects)
-          ? entry.projects
+
+      const technicalAreas = Array.isArray(run.technical_areas)
+        ? run.technical_areas
+          .map((area) => {
+            if (typeof area === "string") {
+              return { name: area, count: 0 };
+            }
+            if (!area || typeof area !== "object") {
+              return null;
+            }
+            const name = typeof area.name === "string" ? area.name : "";
+            if (name === "") {
+              return null;
+            }
+            return { name, count: asNumber(area.count) };
+          })
+          .filter((area) => area !== null)
+        : Array.isArray(entry.technical_areas)
+          ? entry.technical_areas
+            .map((area) => (typeof area === "string" ? { name: area, count: 0 } : null))
+            .filter((area) => area !== null)
           : [];
+
+      const projectDetails = Array.isArray(run.projects)
+        ? run.projects
+          .map((project) => {
+            if (!project || typeof project !== "object") {
+              return null;
+            }
+            const codeName = typeof project.code_name === "string" ? project.code_name : "";
+            if (codeName === "") {
+              return null;
+            }
+            const extensions = Array.isArray(project.extensions)
+              ? project.extensions
+                .map((ext) => {
+                  if (!ext || typeof ext !== "object") {
+                    return null;
+                  }
+                  const name = typeof ext.name === "string" ? ext.name : "";
+                  if (name === "") {
+                    return null;
+                  }
+                  return { name, count: asNumber(ext.count) };
+                })
+                .filter((ext) => ext !== null)
+              : [];
+            return {
+              code_name: codeName,
+              commits: asNumber(project.commits),
+              files_changed: asNumber(project.files_changed),
+              insertions: asNumber(project.insertions),
+              deletions: asNumber(project.deletions),
+              dominant_area: typeof project.dominant_area === "string" ? project.dominant_area : "",
+              problem: typeof project.problem === "string" ? project.problem : "",
+              action: typeof project.action === "string" ? project.action : "",
+              outcome: typeof project.outcome === "string" ? project.outcome : "",
+              confidence: typeof project.confidence === "number" ? project.confidence : null,
+              extensions
+            };
+          })
+          .filter((project) => project !== null)
+        : [];
+
+      const projects = projectDetails.length > 0
+        ? projectDetails.map((project) => project.code_name)
+        : Array.isArray(entry.projects)
+          ? entry.projects.filter((name) => typeof name === "string" && name !== "")
+          : [];
+
       return {
         generated_at_utc: generatedAt,
         since_utc: run.since_utc || entry.since_utc || null,
         iteration_key: run.iteration_key || entry.iteration_key || null,
         ts,
         projects,
+        technical_areas: technicalAreas,
+        project_details: projectDetails,
         metrics: {
           repos_touched: asNumber(totals.repos_touched ?? entry?.totals?.repos_touched),
           commits: asNumber(totals.commits ?? entry?.totals?.commits),
@@ -789,11 +1412,19 @@
     }
 
     function rerender() {
-      const filtered = filterPoints(allPoints);
+      const timeScoped = filterPoints(allPoints);
+      const filtered = applyFacetFilters(timeScoped);
       const metricKey = metricSelect.value;
+      if (filtered.length === 0) {
+        selectedPoint = null;
+      } else if (!selectedPoint || !filtered.some((point) => sameRun(point, selectedPoint))) {
+        selectedPoint = filtered[filtered.length - 1];
+      }
       renderKpis(filtered);
+      renderSummaryBlocks(filtered);
       renderTable(filtered);
       renderChart(filtered, metricKey);
+      renderRunDetails(selectedPoint);
     }
 
     async function init() {
@@ -808,6 +1439,7 @@
         const first = allPoints[0].generated_at_utc;
         const last = allPoints[allPoints.length - 1].generated_at_utc;
         metaInfo.textContent = `${allPoints.length} runs loaded, from ${formatDateUtc(first)} to ${formatDateUtc(last)}.`;
+        buildFacetOptions(allPoints);
         rerender();
       } catch (error) {
         showError(`Unable to load data: ${error.message}`);
@@ -817,6 +1449,8 @@
 
     metricSelect.addEventListener("change", rerender);
     windowSelect.addEventListener("change", rerender);
+    projectSelect.addEventListener("change", rerender);
+    areaSelect.addEventListener("change", rerender);
     init();
   </script>
 </body>
