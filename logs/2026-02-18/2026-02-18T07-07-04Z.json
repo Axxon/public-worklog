@@ -1,0 +1,172 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-18T07:07:04Z",
+    "since_utc": "2026-02-18T07:06:55Z",
+    "iteration_key": "2026-02-18:2",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 4,
+        "commits": 4,
+        "files_changed": 18,
+        "insertions": 1101,
+        "deletions": 420,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "technical documentation and governance",
+            "count": 6
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 6
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 3
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 3
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 7,
+            "insertions": 76,
+            "deletions": 21,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 7 files (+76/-21).",
+            "proof_ids": [
+                "proof-2026-02-18-2-neo-commits-1",
+                "proof-2026-02-18-2-neo-files-7",
+                "proof-2026-02-18-2-neo-surface-none",
+                "proof-2026-02-18-2-neo-surface-md"
+            ],
+            "confidence": 0.6,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 4
+                },
+                {
+                    "name": "md",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "code_name": "Smith",
+            "commits": 1,
+            "files_changed": 7,
+            "insertions": 945,
+            "deletions": 331,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 7 files (+945/-331).",
+            "proof_ids": [
+                "proof-2026-02-18-2-smith-commits-1",
+                "proof-2026-02-18-2-smith-files-7",
+                "proof-2026-02-18-2-smith-surface-ts",
+                "proof-2026-02-18-2-smith-surface-json",
+                "proof-2026-02-18-2-smith-surface-none"
+            ],
+            "confidence": 0.64,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 3
+                },
+                {
+                    "name": "json",
+                    "count": 2
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 3,
+            "insertions": 79,
+            "deletions": 67,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 3 files (+79/-67).",
+            "proof_ids": [
+                "proof-2026-02-18-2-architect-commits-1",
+                "proof-2026-02-18-2-architect-files-3",
+                "proof-2026-02-18-2-architect-surface-none",
+                "proof-2026-02-18-2-architect-surface-lock",
+                "proof-2026-02-18-2-architect-surface-txt"
+            ],
+            "confidence": 0.59,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "lock",
+                    "count": 1
+                },
+                {
+                    "name": "txt",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Cypher",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 1,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 1 commits and 1 files (+1/-1).",
+            "proof_ids": [
+                "proof-2026-02-18-2-cypher-commits-1",
+                "proof-2026-02-18-2-cypher-files-1",
+                "proof-2026-02-18-2-cypher-surface-txt"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "txt",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
