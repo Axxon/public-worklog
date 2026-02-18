@@ -1,0 +1,351 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-18T10:48:51Z",
+    "since_utc": "2026-02-18T10:48:15Z",
+    "iteration_key": "2026-02-18:3",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 10,
+        "commits": 10,
+        "files_changed": 41,
+        "insertions": 623,
+        "deletions": 83,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 22
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 7
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 5
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 4
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 2
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 15,
+            "insertions": 462,
+            "deletions": 24,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 15 files (+462/-24).",
+            "proof_ids": [
+                "proof-2026-02-18-3-neo-commits-1",
+                "proof-2026-02-18-3-neo-files-15",
+                "proof-2026-02-18-3-neo-surface-none",
+                "proof-2026-02-18-3-neo-surface-md",
+                "proof-2026-02-18-3-neo-surface-yml"
+            ],
+            "confidence": 0.71,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 9
+                },
+                {
+                    "name": "md",
+                    "count": 2
+                },
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                },
+                {
+                    "name": "js",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 10,
+            "insertions": 88,
+            "deletions": 16,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 10 files (+88/-16).",
+            "proof_ids": [
+                "proof-2026-02-18-3-architect-commits-1",
+                "proof-2026-02-18-3-architect-files-10",
+                "proof-2026-02-18-3-architect-surface-none",
+                "proof-2026-02-18-3-architect-surface-yml",
+                "proof-2026-02-18-3-architect-surface-example"
+            ],
+            "confidence": 0.66,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 4
+                },
+                {
+                    "name": "yml",
+                    "count": 3
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                },
+                {
+                    "name": "testing",
+                    "count": 1
+                },
+                {
+                    "name": "php",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 6,
+            "insertions": 18,
+            "deletions": 10,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 6 files (+18/-10).",
+            "proof_ids": [
+                "proof-2026-02-18-3-keymaker-commits-1",
+                "proof-2026-02-18-3-keymaker-files-6",
+                "proof-2026-02-18-3-keymaker-surface-ts",
+                "proof-2026-02-18-3-keymaker-surface-none",
+                "proof-2026-02-18-3-keymaker-surface-playwright"
+            ],
+            "confidence": 0.61,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 4
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "playwright",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Merovingian",
+            "commits": 1,
+            "files_changed": 3,
+            "insertions": 7,
+            "deletions": 2,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 3 files (+7/-2).",
+            "proof_ids": [
+                "proof-2026-02-18-3-merovingian-commits-1",
+                "proof-2026-02-18-3-merovingian-files-3",
+                "proof-2026-02-18-3-merovingian-surface-none",
+                "proof-2026-02-18-3-merovingian-surface-yml"
+            ],
+            "confidence": 0.57,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 2
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Smith",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 4,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 2 files (+4/-1).",
+            "proof_ids": [
+                "proof-2026-02-18-3-smith-commits-1",
+                "proof-2026-02-18-3-smith-files-2",
+                "proof-2026-02-18-3-smith-surface-none",
+                "proof-2026-02-18-3-smith-surface-yml"
+            ],
+            "confidence": 0.56,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Trinity",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 4,
+            "deletions": 2,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+4/-2).",
+            "proof_ids": [
+                "proof-2026-02-18-3-trinity-commits-1",
+                "proof-2026-02-18-3-trinity-files-1",
+                "proof-2026-02-18-3-trinity-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Cypher",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 4,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+4/-0).",
+            "proof_ids": [
+                "proof-2026-02-18-3-cypher-commits-1",
+                "proof-2026-02-18-3-cypher-files-1",
+                "proof-2026-02-18-3-cypher-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Oracle",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 3,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+3/-0).",
+            "proof_ids": [
+                "proof-2026-02-18-3-oracle-commits-1",
+                "proof-2026-02-18-3-oracle-files-1",
+                "proof-2026-02-18-3-oracle-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Niobe",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 21,
+            "deletions": 18,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+21/-18).",
+            "proof_ids": [
+                "proof-2026-02-18-3-niobe-commits-1",
+                "proof-2026-02-18-3-niobe-files-1",
+                "proof-2026-02-18-3-niobe-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Ghost",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 12,
+            "deletions": 10,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+12/-10).",
+            "proof_ids": [
+                "proof-2026-02-18-3-ghost-commits-1",
+                "proof-2026-02-18-3-ghost-files-1",
+                "proof-2026-02-18-3-ghost-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
