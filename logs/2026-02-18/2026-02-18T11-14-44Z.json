@@ -1,0 +1,157 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-18T11:14:43Z",
+    "since_utc": "2026-02-18T11:12:56Z",
+    "iteration_key": "2026-02-18:4",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 4,
+        "commits": 4,
+        "files_changed": 19,
+        "insertions": 130,
+        "deletions": 23,
+        "binary_files": 2
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 12
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 2
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 1
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 1
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 14,
+            "insertions": 107,
+            "deletions": 17,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 14 files (+107/-17).",
+            "proof_ids": [
+                "proof-2026-02-18-4-neo-commits-1",
+                "proof-2026-02-18-4-neo-files-14",
+                "proof-2026-02-18-4-neo-surface-none",
+                "proof-2026-02-18-4-neo-surface-md",
+                "proof-2026-02-18-4-neo-surface-sh"
+            ],
+            "confidence": 0.68,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 12
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                },
+                {
+                    "name": "sh",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Cypher",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 5,
+            "deletions": 4,
+            "binary_files": 1,
+            "dominant_area": "cross-stack source maintenance",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack source maintenance across 1 commits and 2 files (+5/-4).",
+            "proof_ids": [
+                "proof-2026-02-18-4-cypher-commits-1",
+                "proof-2026-02-18-4-cypher-files-2",
+                "proof-2026-02-18-4-cypher-surface-py"
+            ],
+            "confidence": 0.54,
+            "extensions": [
+                {
+                    "name": "py",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 10,
+            "deletions": 0,
+            "binary_files": 1,
+            "dominant_area": "cross-stack source maintenance",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack source maintenance across 1 commits and 2 files (+10/-0).",
+            "proof_ids": [
+                "proof-2026-02-18-4-architect-commits-1",
+                "proof-2026-02-18-4-architect-files-2",
+                "proof-2026-02-18-4-architect-surface-py"
+            ],
+            "confidence": 0.54,
+            "extensions": [
+                {
+                    "name": "py",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Oracle",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 8,
+            "deletions": 2,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 1 files (+8/-2).",
+            "proof_ids": [
+                "proof-2026-02-18-4-oracle-commits-1",
+                "proof-2026-02-18-4-oracle-files-1",
+                "proof-2026-02-18-4-oracle-surface-php"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
