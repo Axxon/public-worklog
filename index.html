@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Worklog Timeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #09131f;
+      --bg-soft: #10263c;
+      --ink: #e8f2ff;
+      --muted: #9eb4cc;
+      --accent: #ff8c42;
+      --accent-2: #00bfa6;
+      --panel: rgba(7, 20, 34, 0.72);
+      --border: rgba(158, 180, 204, 0.24);
+      --danger: #ff5d73;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Avenir Next", "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1000px 500px at 7% -15%, rgba(255, 140, 66, 0.20), transparent 60%),
+        radial-gradient(900px 450px at 90% 0%, rgba(0, 191, 166, 0.18), transparent 58%),
+        linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-soft) 100%);
+      padding: 32px 18px 46px;
+    }
+
+    .page {
+      max-width: 1140px;
+      margin: 0 auto;
+      animation: rise 460ms ease-out both;
+    }
+
+    .header {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: end;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      backdrop-filter: blur(4px);
+      border-radius: 16px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+    }
+
+    .control-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px;
+      animation: rise 540ms ease-out both;
+    }
+
+    .control-group {
+      display: grid;
+      gap: 5px;
+      min-width: 170px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    select {
+      appearance: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(9, 24, 40, 0.85);
+      color: var(--ink);
+      font: inherit;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 140ms ease, transform 140ms ease;
+    }
+
+    select:focus {
+      border-color: var(--accent-2);
+      transform: translateY(-1px);
+    }
+
+    .kpi-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      animation: rise 620ms ease-out both;
+    }
+
+    .kpi {
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -46px;
+      bottom: -52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      margin-top: 5px;
+      font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.35rem, 2vw, 1.95rem);
+      line-height: 1.06;
+    }
+
+    .chart-panel {
+      margin-top: 14px;
+      padding: 12px 12px 16px;
+      animation: rise 710ms ease-out both;
+    }
+
+    .chart-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(8, 30, 46, 0.72), rgba(5, 16, 28, 0.72));
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 320px;
+    }
+
+    .chart-hint {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .tooltip {
+      position: absolute;
+      min-width: 230px;
+      max-width: min(290px, 80vw);
+      background: rgba(7, 15, 26, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.46);
+      pointer-events: none;
+      transform: translate(-50%, calc(-100% - 12px));
+      z-index: 3;
+    }
+
+    .tooltip[hidden] {
+      display: none;
+    }
+
+    .tooltip-title {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .tooltip-sub {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 7px;
+    }
+
+    .tooltip-metric {
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .table-panel {
+      margin-top: 12px;
+      overflow: hidden;
+      animation: rise 800ms ease-out both;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 0.9rem;
+    }
+
+    thead th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(158, 180, 204, 0.12);
+      vertical-align: top;
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .error {
+      margin-top: 16px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 93, 115, 0.35);
+      background: rgba(105, 10, 26, 0.28);
+      color: #ffd9df;
+      display: none;
+    }
+
+    .chip {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 9px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-right: 6px;
+      margin-top: 3px;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px 10px 22px;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+      .control-group {
+        min-width: 46%;
+      }
+      svg {
+        min-height: 265px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div>
+        <h1>Public Worklog Timeline</h1>
+        <div class="subtitle" id="metaInfo">Loading data...</div>
+      </div>
+      <section class="panel control-panel" aria-label="Chart controls">
+        <div class="control-group">
+          <label for="metricSelect">Metric</label>
+          <select id="metricSelect">
+            <option value="commits">Commits</option>
+            <option value="files_changed">Files Changed</option>
+            <option value="insertions">Insertions</option>
+            <option value="deletions">Deletions</option>
+            <option value="repos_touched">Repos Touched</option>
+            <option value="binary_files">Binary Files</option>
+            <option value="projects_count">Projects Mentioned</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="windowSelect">Time Window</label>
+          <select id="windowSelect">
+            <option value="all">All Data</option>
+            <option value="90">Last 90 Days</option>
+            <option value="30">Last 30 Days</option>
+            <option value="7">Last 7 Days</option>
+          </select>
+        </div>
+      </section>
+    </header>
+
+    <section class="kpi-grid" id="kpiGrid">
+      <article class="panel kpi">
+        <div class="kpi-label">Runs</div>
+        <div class="kpi-value" id="kpiRuns">0</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-label">Total Commits</div>
+        <div class="kpi-value" id="kpiCommits">0</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-label">Total Files</div>
+        <div class="kpi-value" id="kpiFiles">0</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-label">Distinct Projects</div>
+        <div class="kpi-value" id="kpiProjects">0</div>
+      </article>
+    </section>
+
+    <section class="panel chart-panel">
+      <div class="chart-frame" id="chartFrame">
+        <svg id="timelineChart" viewBox="0 0 1100 420" role="img" aria-label="Temporal worklog chart"></svg>
+        <aside class="tooltip" id="tooltip" hidden>
+          <div class="tooltip-title" id="tooltipTitle"></div>
+          <div class="tooltip-sub" id="tooltipSub"></div>
+          <div class="tooltip-metric" id="tooltipMetric"></div>
+        </aside>
+      </div>
+      <p class="chart-hint" id="chartHint">Hover a data point to inspect one run.</p>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date (UTC)</th>
+              <th>Iteration</th>
+              <th>Commits</th>
+              <th>Files</th>
+              <th>Insertions</th>
+              <th>Deletions</th>
+              <th>Projects</th>
+            </tr>
+          </thead>
+          <tbody id="runsTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div id="errorBox" class="error" role="alert"></div>
+  </main>
+
+  <script>
+    const METRICS = {
+      commits: { label: "Commits", color: "#ff8c42" },
+      files_changed: { label: "Files Changed", color: "#00bfa6" },
+      insertions: { label: "Insertions", color: "#5ee1ff" },
+      deletions: { label: "Deletions", color: "#ff5d73" },
+      repos_touched: { label: "Repos Touched", color: "#ffc857" },
+      binary_files: { label: "Binary Files", color: "#f988e6" },
+      projects_count: { label: "Projects Mentioned", color: "#8dc6ff" }
+    };
+
+    let allPoints = [];
+
+    const metricSelect = document.getElementById("metricSelect");
+    const windowSelect = document.getElementById("windowSelect");
+    const chart = document.getElementById("timelineChart");
+    const chartFrame = document.getElementById("chartFrame");
+    const chartHint = document.getElementById("chartHint");
+    const tooltip = document.getElementById("tooltip");
+    const tooltipTitle = document.getElementById("tooltipTitle");
+    const tooltipSub = document.getElementById("tooltipSub");
+    const tooltipMetric = document.getElementById("tooltipMetric");
+    const errorBox = document.getElementById("errorBox");
+
+    const kpiRuns = document.getElementById("kpiRuns");
+    const kpiCommits = document.getElementById("kpiCommits");
+    const kpiFiles = document.getElementById("kpiFiles");
+    const kpiProjects = document.getElementById("kpiProjects");
+    const metaInfo = document.getElementById("metaInfo");
+    const runsTable = document.getElementById("runsTable");
+
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+    }
+
+    function hideError() {
+      errorBox.style.display = "none";
+      errorBox.textContent = "";
+    }
+
+    function asNumber(value) {
+      if (typeof value === "number" && Number.isFinite(value)) {
+        return value;
+      }
+      if (typeof value === "string" && value.trim() !== "") {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : 0;
+      }
+      return 0;
+    }
+
+    function formatNum(value) {
+      return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+
+    function formatDateUtc(iso) {
+      const date = new Date(iso);
+      if (Number.isNaN(date.getTime())) {
+        return iso || "Unknown";
+      }
+      return new Intl.DateTimeFormat("en-GB", {
+        timeZone: "UTC",
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(date) + " UTC";
+    }
+
+    function formatAxisLabel(ts) {
+      const date = new Date(ts);
+      if (Number.isNaN(date.getTime())) {
+        return "-";
+      }
+      return new Intl.DateTimeFormat("en-GB", {
+        timeZone: "UTC",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit"
+      }).format(date);
+    }
+
+    function toSafePath(path) {
+      if (typeof path !== "string") {
+        return null;
+      }
+      if (!path.startsWith("logs/") || path.includes("..")) {
+        return null;
+      }
+      return "./" + path;
+    }
+
+    function createSvg(tag, attrs = {}) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      Object.entries(attrs).forEach(([key, value]) => {
+        el.setAttribute(key, String(value));
+      });
+      return el;
+    }
+
+    function scale(value, inMin, inMax, outMin, outMax) {
+      if (inMax === inMin) {
+        return (outMin + outMax) / 2;
+      }
+      return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
+    }
+
+    function filterPoints(points) {
+      const windowDays = windowSelect.value;
+      if (windowDays === "all") {
+        return points;
+      }
+      const days = asNumber(windowDays);
+      if (days <= 0 || points.length === 0) {
+        return points;
+      }
+      const maxTs = points[points.length - 1].ts;
+      const fromTs = maxTs - (days * 24 * 60 * 60 * 1000);
+      return points.filter((point) => point.ts >= fromTs);
+    }
+
+    function getMetricValue(point, key) {
+      if (key === "projects_count") {
+        return point.projects.length;
+      }
+      return asNumber(point.metrics[key]);
+    }
+
+    function buildPath(points, xMin, xMax, yMin, yMax, chartWidth, chartHeight, pad) {
+      const mapped = points.map((point) => {
+        const x = scale(point.ts, xMin, xMax, pad.left, chartWidth - pad.right);
+        const y = scale(point.value, yMin, yMax, chartHeight - pad.bottom, pad.top);
+        return { x, y };
+      });
+      const line = mapped.map((p, idx) => (idx === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`)).join(" ");
+      const area = [
+        line,
+        `L ${mapped[mapped.length - 1].x} ${chartHeight - pad.bottom}`,
+        `L ${mapped[0].x} ${chartHeight - pad.bottom}`,
+        "Z"
+      ].join(" ");
+      return { mapped, line, area };
+    }
+
+    function renderKpis(points) {
+      const projectSet = new Set();
+      let commits = 0;
+      let files = 0;
+      points.forEach((point) => {
+        commits += point.metrics.commits;
+        files += point.metrics.files_changed;
+        point.projects.forEach((name) => projectSet.add(name));
+      });
+      kpiRuns.textContent = formatNum(points.length);
+      kpiCommits.textContent = formatNum(commits);
+      kpiFiles.textContent = formatNum(files);
+      kpiProjects.textContent = formatNum(projectSet.size);
+    }
+
+    function renderTable(points) {
+      runsTable.textContent = "";
+      const sorted = [...points].sort((a, b) => b.ts - a.ts);
+      sorted.forEach((point) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${formatDateUtc(point.generated_at_utc)}</td>
+          <td>${point.iteration_key || "-"}</td>
+          <td>${formatNum(point.metrics.commits)}</td>
+          <td>${formatNum(point.metrics.files_changed)}</td>
+          <td>${formatNum(point.metrics.insertions)}</td>
+          <td>${formatNum(point.metrics.deletions)}</td>
+          <td>${point.projects.slice(0, 3).map((name) => `<span class="chip">${name}</span>`).join("")}</td>
+        `;
+        runsTable.appendChild(row);
+      });
+    }
+
+    function positionTooltip(event) {
+      const rect = chartFrame.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    }
+
+    function bindPointTooltip(circle, point, metricKey) {
+      const metricMeta = METRICS[metricKey];
+      const value = getMetricValue(point, metricKey);
+      const onEnter = (event) => {
+        tooltipTitle.textContent = point.iteration_key || "Worklog run";
+        tooltipSub.textContent = formatDateUtc(point.generated_at_utc);
+        tooltipMetric.textContent = `${metricMeta.label}: ${formatNum(value)}`;
+        tooltip.hidden = false;
+        positionTooltip(event);
+      };
+      const onMove = (event) => {
+        positionTooltip(event);
+      };
+      const onLeave = () => {
+        tooltip.hidden = true;
+      };
+      circle.addEventListener("pointerenter", onEnter);
+      circle.addEventListener("pointermove", onMove);
+      circle.addEventListener("pointerleave", onLeave);
+    }
+
+    function renderChart(points, metricKey) {
+      chart.textContent = "";
+      tooltip.hidden = true;
+      const metricMeta = METRICS[metricKey];
+
+      if (points.length === 0) {
+        chartHint.textContent = "No data available for this time window.";
+        return;
+      }
+
+      const chartWidth = 1100;
+      const chartHeight = 420;
+      const pad = { top: 36, right: 24, bottom: 54, left: 68 };
+      const dataset = points.map((point) => ({ ...point, value: getMetricValue(point, metricKey) }));
+
+      const xMin = dataset[0].ts;
+      const xMax = dataset[dataset.length - 1].ts;
+      const maxValue = Math.max(1, ...dataset.map((point) => point.value));
+      const yMax = maxValue * 1.15;
+      const yMin = 0;
+
+      const defs = createSvg("defs");
+      const gradient = createSvg("linearGradient", { id: "areaGradient", x1: "0%", y1: "0%", x2: "0%", y2: "100%" });
+      gradient.appendChild(createSvg("stop", { offset: "0%", "stop-color": metricMeta.color, "stop-opacity": "0.35" }));
+      gradient.appendChild(createSvg("stop", { offset: "100%", "stop-color": metricMeta.color, "stop-opacity": "0.02" }));
+      defs.appendChild(gradient);
+      chart.appendChild(defs);
+
+      for (let i = 0; i < 5; i++) {
+        const yVal = scale(i, 0, 4, yMin, yMax);
+        const y = scale(yVal, yMin, yMax, chartHeight - pad.bottom, pad.top);
+        const grid = createSvg("line", {
+          x1: pad.left,
+          y1: y,
+          x2: chartWidth - pad.right,
+          y2: y,
+          stroke: "rgba(158,180,204,0.22)",
+          "stroke-dasharray": "3 6",
+          "stroke-width": "1"
+        });
+        const label = createSvg("text", {
+          x: pad.left - 10,
+          y: y + 4,
+          "text-anchor": "end",
+          fill: "rgba(232,242,255,0.75)",
+          "font-size": "12"
+        });
+        label.textContent = formatNum(yVal);
+        chart.appendChild(grid);
+        chart.appendChild(label);
+      }
+
+      const tickCount = Math.min(6, dataset.length);
+      for (let i = 0; i < tickCount; i++) {
+        const ratio = tickCount === 1 ? 0 : i / (tickCount - 1);
+        const ts = xMin + (xMax - xMin) * ratio;
+        const x = scale(ts, xMin, xMax, pad.left, chartWidth - pad.right);
+        const tick = createSvg("line", {
+          x1: x,
+          y1: chartHeight - pad.bottom,
+          x2: x,
+          y2: chartHeight - pad.bottom + 7,
+          stroke: "rgba(158,180,204,0.32)"
+        });
+        const text = createSvg("text", {
+          x: x,
+          y: chartHeight - pad.bottom + 21,
+          "text-anchor": "middle",
+          fill: "rgba(232,242,255,0.75)",
+          "font-size": "12"
+        });
+        text.textContent = formatAxisLabel(ts);
+        chart.appendChild(tick);
+        chart.appendChild(text);
+      }
+
+      const { mapped, line, area } = buildPath(dataset, xMin, xMax, yMin, yMax, chartWidth, chartHeight, pad);
+
+      const areaPath = createSvg("path", {
+        d: area,
+        fill: "url(#areaGradient)"
+      });
+      chart.appendChild(areaPath);
+
+      const linePath = createSvg("path", {
+        d: line,
+        fill: "none",
+        stroke: metricMeta.color,
+        "stroke-width": "3",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      });
+      let lengthEstimate = 2400;
+      if (typeof linePath.getTotalLength === "function") {
+        try {
+          lengthEstimate = linePath.getTotalLength();
+        } catch (_) {
+          lengthEstimate = 2400;
+        }
+      }
+      linePath.style.strokeDasharray = String(lengthEstimate);
+      linePath.style.strokeDashoffset = String(lengthEstimate);
+      chart.appendChild(linePath);
+      if (typeof linePath.animate === "function") {
+        linePath.animate(
+          [
+            { strokeDashoffset: lengthEstimate },
+            { strokeDashoffset: 0 }
+          ],
+          { duration: 900, easing: "ease-out", fill: "forwards" }
+        );
+      } else {
+        linePath.style.strokeDashoffset = "0";
+      }
+
+      mapped.forEach((mappedPoint, index) => {
+        const point = dataset[index];
+        const circle = createSvg("circle", {
+          cx: mappedPoint.x,
+          cy: mappedPoint.y,
+          r: "5",
+          fill: metricMeta.color,
+          stroke: "#071520",
+          "stroke-width": "2"
+        });
+        bindPointTooltip(circle, point, metricKey);
+        chart.appendChild(circle);
+      });
+
+      const peak = dataset.reduce((best, current) => (current.value > best.value ? current : best), dataset[0]);
+      chartHint.textContent = `${metricMeta.label} peak: ${formatNum(peak.value)} (${formatDateUtc(peak.generated_at_utc)})`;
+    }
+
+    function normalizeRun(entry, run) {
+      const generatedAt = run.generated_at_utc || entry.generated_at_utc || null;
+      const ts = generatedAt ? Date.parse(generatedAt) : NaN;
+      if (!Number.isFinite(ts)) {
+        return null;
+      }
+      const totals = run.totals || {};
+      const projects = Array.isArray(run.projects)
+        ? run.projects.map((project) => project.code_name).filter((name) => typeof name === "string" && name !== "")
+        : Array.isArray(entry.projects)
+          ? entry.projects
+          : [];
+      return {
+        generated_at_utc: generatedAt,
+        since_utc: run.since_utc || entry.since_utc || null,
+        iteration_key: run.iteration_key || entry.iteration_key || null,
+        ts,
+        projects,
+        metrics: {
+          repos_touched: asNumber(totals.repos_touched ?? entry?.totals?.repos_touched),
+          commits: asNumber(totals.commits ?? entry?.totals?.commits),
+          files_changed: asNumber(totals.files_changed ?? entry?.totals?.files_changed),
+          insertions: asNumber(totals.insertions),
+          deletions: asNumber(totals.deletions),
+          binary_files: asNumber(totals.binary_files)
+        }
+      };
+    }
+
+    async function fetchJson(path) {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} on ${path}`);
+      }
+      return response.json();
+    }
+
+    async function loadData() {
+      const indexData = await fetchJson("./aeo-index.json");
+      const entries = Array.isArray(indexData.entries) ? indexData.entries : [];
+      const runs = await Promise.all(entries.map(async (entry) => {
+        const safePath = toSafePath(entry.path_json);
+        if (!safePath) {
+          return normalizeRun(entry, {});
+        }
+        try {
+          const run = await fetchJson(safePath);
+          return normalizeRun(entry, run);
+        } catch (_) {
+          return normalizeRun(entry, {});
+        }
+      }));
+
+      return runs.filter((run) => run !== null).sort((a, b) => a.ts - b.ts);
+    }
+
+    function rerender() {
+      const filtered = filterPoints(allPoints);
+      const metricKey = metricSelect.value;
+      renderKpis(filtered);
+      renderTable(filtered);
+      renderChart(filtered, metricKey);
+    }
+
+    async function init() {
+      hideError();
+      try {
+        allPoints = await loadData();
+        if (allPoints.length === 0) {
+          showError("No worklog JSON runs found.");
+          metaInfo.textContent = "No data available.";
+          return;
+        }
+        const first = allPoints[0].generated_at_utc;
+        const last = allPoints[allPoints.length - 1].generated_at_utc;
+        metaInfo.textContent = `${allPoints.length} runs loaded, from ${formatDateUtc(first)} to ${formatDateUtc(last)}.`;
+        rerender();
+      } catch (error) {
+        showError(`Unable to load data: ${error.message}`);
+        metaInfo.textContent = "Load failed.";
+      }
+    }
+
+    metricSelect.addEventListener("change", rerender);
+    windowSelect.addEventListener("change", rerender);
+    init();
+  </script>
+</body>
+</html>
