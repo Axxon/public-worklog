@@ -1,0 +1,81 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-18T05:43:32Z",
+    "since_utc": "2026-02-18T05:43:28Z",
+    "iteration_key": "2026-02-18:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 1,
+        "commits": 1,
+        "files_changed": 9,
+        "insertions": 249,
+        "deletions": 6,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 4
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 3
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 9,
+            "insertions": 249,
+            "deletions": 6,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 9 files (+249/-6).",
+            "proof_ids": [
+                "proof-2026-02-18-1-neo-commits-1",
+                "proof-2026-02-18-1-neo-files-9",
+                "proof-2026-02-18-1-neo-surface-none",
+                "proof-2026-02-18-1-neo-surface-yml",
+                "proof-2026-02-18-1-neo-surface-md"
+            ],
+            "confidence": 0.66,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 4
+                },
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "md",
+                    "count": 2
+                },
+                {
+                    "name": "sh",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
