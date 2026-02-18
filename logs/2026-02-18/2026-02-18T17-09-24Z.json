@@ -1,0 +1,127 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-18T17:09:24Z",
+    "since_utc": "2026-02-18T17:07:24Z",
+    "iteration_key": "2026-02-18:5",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 2,
+        "commits": 2,
+        "files_changed": 105,
+        "insertions": 4893,
+        "deletions": 534,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 85
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 11
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 6
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 2
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 89,
+            "insertions": 2571,
+            "deletions": 509,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 89 files (+2571/-509).",
+            "proof_ids": [
+                "proof-2026-02-18-5-keymaker-commits-1",
+                "proof-2026-02-18-5-keymaker-files-89",
+                "proof-2026-02-18-5-keymaker-surface-vue",
+                "proof-2026-02-18-5-keymaker-surface-ts",
+                "proof-2026-02-18-5-keymaker-surface-json"
+            ],
+            "confidence": 0.76,
+            "extensions": [
+                {
+                    "name": "vue",
+                    "count": 58
+                },
+                {
+                    "name": "ts",
+                    "count": 27
+                },
+                {
+                    "name": "json",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 16,
+            "insertions": 2322,
+            "deletions": 25,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 16 files (+2322/-25).",
+            "proof_ids": [
+                "proof-2026-02-18-5-architect-commits-1",
+                "proof-2026-02-18-5-architect-files-16",
+                "proof-2026-02-18-5-architect-surface-php",
+                "proof-2026-02-18-5-architect-surface-none",
+                "proof-2026-02-18-5-architect-surface-fixtures"
+            ],
+            "confidence": 0.71,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 11
+                },
+                {
+                    "name": "none",
+                    "count": 2
+                },
+                {
+                    "name": "fixtures",
+                    "count": 1
+                },
+                {
+                    "name": "py",
+                    "count": 1
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
