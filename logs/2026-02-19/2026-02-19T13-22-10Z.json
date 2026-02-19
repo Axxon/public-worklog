@@ -1,0 +1,96 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-19T13:22:09Z",
+    "since_utc": "2026-02-19T13:18:07Z",
+    "iteration_key": "2026-02-19:2",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 2,
+        "commits": 2,
+        "files_changed": 8,
+        "insertions": 184,
+        "deletions": 6,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "technical documentation and governance",
+            "count": 4
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 3
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 4,
+            "insertions": 173,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 1 commits and 4 files (+173/-0).",
+            "proof_ids": [
+                "proof-2026-02-19-2-neo-commits-1",
+                "proof-2026-02-19-2-neo-files-4",
+                "proof-2026-02-19-2-neo-surface-md"
+            ],
+            "confidence": 0.55,
+            "extensions": [
+                {
+                    "name": "md",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 4,
+            "insertions": 11,
+            "deletions": 6,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 4 files (+11/-6).",
+            "proof_ids": [
+                "proof-2026-02-19-2-architect-commits-1",
+                "proof-2026-02-19-2-architect-files-4",
+                "proof-2026-02-19-2-architect-surface-php",
+                "proof-2026-02-19-2-architect-surface-none"
+            ],
+            "confidence": 0.57,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 3
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
