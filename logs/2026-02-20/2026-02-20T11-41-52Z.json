@@ -1,0 +1,134 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-20T11:41:52Z",
+    "since_utc": "2026-02-20T11:39:49Z",
+    "iteration_key": "2026-02-20:2",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 3,
+        "commits": 3,
+        "files_changed": 15,
+        "insertions": 734,
+        "deletions": 157,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 5
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 5
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 3
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 7,
+            "insertions": 493,
+            "deletions": 23,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 7 files (+493/-23).",
+            "proof_ids": [
+                "proof-2026-02-20-2-keymaker-commits-1",
+                "proof-2026-02-20-2-keymaker-files-7",
+                "proof-2026-02-20-2-keymaker-surface-vue",
+                "proof-2026-02-20-2-keymaker-surface-sh",
+                "proof-2026-02-20-2-keymaker-surface-ts"
+            ],
+            "confidence": 0.62,
+            "extensions": [
+                {
+                    "name": "vue",
+                    "count": 3
+                },
+                {
+                    "name": "sh",
+                    "count": 2
+                },
+                {
+                    "name": "ts",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 4,
+            "insertions": 12,
+            "deletions": 130,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 4 files (+12/-130).",
+            "proof_ids": [
+                "proof-2026-02-20-2-neo-commits-1",
+                "proof-2026-02-20-2-neo-files-4",
+                "proof-2026-02-20-2-neo-surface-none"
+            ],
+            "confidence": 0.55,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 4,
+            "insertions": 229,
+            "deletions": 4,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 4 files (+229/-4).",
+            "proof_ids": [
+                "proof-2026-02-20-2-architect-commits-1",
+                "proof-2026-02-20-2-architect-files-4",
+                "proof-2026-02-20-2-architect-surface-php",
+                "proof-2026-02-20-2-architect-surface-none"
+            ],
+            "confidence": 0.57,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 3
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
