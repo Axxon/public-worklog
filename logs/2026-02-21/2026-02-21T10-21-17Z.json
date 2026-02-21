@@ -1,0 +1,151 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-21T10:21:17Z",
+    "since_utc": "2026-02-21T10:18:22Z",
+    "iteration_key": "2026-02-21:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 2,
+        "commits": 2,
+        "files_changed": 54,
+        "insertions": 2285,
+        "deletions": 1583,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 18
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 17
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 9
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 6
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 4
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 32,
+            "insertions": 1248,
+            "deletions": 1094,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 32 files (+1248/-1094).",
+            "proof_ids": [
+                "proof-2026-02-21-1-architect-commits-1",
+                "proof-2026-02-21-1-architect-files-32",
+                "proof-2026-02-21-1-architect-surface-php",
+                "proof-2026-02-21-1-architect-surface-yml",
+                "proof-2026-02-21-1-architect-surface-none"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 17
+                },
+                {
+                    "name": "yml",
+                    "count": 5
+                },
+                {
+                    "name": "none",
+                    "count": 3
+                },
+                {
+                    "name": "sh",
+                    "count": 2
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                },
+                {
+                    "name": "fixtures",
+                    "count": 1
+                },
+                {
+                    "name": "conf",
+                    "count": 1
+                },
+                {
+                    "name": "py",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 22,
+            "insertions": 1037,
+            "deletions": 489,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 22 files (+1037/-489).",
+            "proof_ids": [
+                "proof-2026-02-21-1-keymaker-commits-1",
+                "proof-2026-02-21-1-keymaker-files-22",
+                "proof-2026-02-21-1-keymaker-surface-vue",
+                "proof-2026-02-21-1-keymaker-surface-ts",
+                "proof-2026-02-21-1-keymaker-surface-none"
+            ],
+            "confidence": 0.76,
+            "extensions": [
+                {
+                    "name": "vue",
+                    "count": 13
+                },
+                {
+                    "name": "ts",
+                    "count": 5
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "json",
+                    "count": 1
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                },
+                {
+                    "name": "sh",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
