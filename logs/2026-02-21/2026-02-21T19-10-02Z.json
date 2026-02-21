@@ -1,0 +1,59 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-21T19:10:02Z",
+    "since_utc": "2026-02-21T19:08:15Z",
+    "iteration_key": "2026-02-21:3",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 1,
+        "commits": 1,
+        "files_changed": 3,
+        "insertions": 3,
+        "deletions": 3,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 3
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 3,
+            "insertions": 3,
+            "deletions": 3,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 3 files (+3/-3).",
+            "proof_ids": [
+                "proof-2026-02-21-3-neo-commits-1",
+                "proof-2026-02-21-3-neo-files-3",
+                "proof-2026-02-21-3-neo-surface-none"
+            ],
+            "confidence": 0.55,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 3
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
