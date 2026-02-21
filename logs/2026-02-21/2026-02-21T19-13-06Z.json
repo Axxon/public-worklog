@@ -1,0 +1,68 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-21T19:13:06Z",
+    "since_utc": "2026-02-21T19:11:08Z",
+    "iteration_key": "2026-02-21:4",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 1,
+        "commits": 1,
+        "files_changed": 2,
+        "insertions": 2,
+        "deletions": 1,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "automation and delivery workflow",
+            "count": 1
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 2,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 2 files (+2/-1).",
+            "proof_ids": [
+                "proof-2026-02-21-4-neo-commits-1",
+                "proof-2026-02-21-4-neo-files-2",
+                "proof-2026-02-21-4-neo-surface-sh",
+                "proof-2026-02-21-4-neo-surface-none"
+            ],
+            "confidence": 0.56,
+            "extensions": [
+                {
+                    "name": "sh",
+                    "count": 1
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
