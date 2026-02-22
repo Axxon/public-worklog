@@ -508,9 +508,9 @@
         <div class="control-group">
           <label for="metricSelect">Metric</label>
           <select id="metricSelect">
-            <option value="commits">Commits</option>
+            <option value="commits" selected>Commits</option>
             <option value="files_changed">Files Changed</option>
-            <option value="insertions" selected>Insertions</option>
+            <option value="insertions">Insertions</option>
             <option value="deletions">Deletions</option>
             <option value="repos_touched">Repos Touched</option>
             <option value="binary_files">Binary Files</option>
@@ -558,6 +558,14 @@
         <div class="kpi-label">Distinct Projects</div>
         <div class="kpi-value" id="kpiProjects">0</div>
       </article>
+      <article class="panel kpi">
+        <div class="kpi-label" id="kpiMetricTotalLabel">Total Commits</div>
+        <div class="kpi-value" id="kpiMetricTotal">0</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-label" id="kpiMetricPeakLabel">Commits Peak</div>
+        <div class="kpi-value" id="kpiMetricPeak">0</div>
+      </article>
     </section>
 
     <section class="panel chart-panel">
@@ -569,7 +577,7 @@
           <div class="tooltip-metric" id="tooltipMetric"></div>
         </aside>
       </div>
-      <p class="chart-hint" id="chartHint">Hover or click a data point to inspect one run.</p>
+      <p class="chart-hint" id="chartHint">Hover or click a data point to inspect one run (values are per run, not cumulative).</p>
     </section>
 
     <section class="panel summary-panel">
@@ -656,6 +664,10 @@
     const kpiCommits = document.getElementById("kpiCommits");
     const kpiFiles = document.getElementById("kpiFiles");
     const kpiProjects = document.getElementById("kpiProjects");
+    const kpiMetricTotalLabel = document.getElementById("kpiMetricTotalLabel");
+    const kpiMetricTotal = document.getElementById("kpiMetricTotal");
+    const kpiMetricPeakLabel = document.getElementById("kpiMetricPeakLabel");
+    const kpiMetricPeak = document.getElementById("kpiMetricPeak");
     const metaInfo = document.getElementById("metaInfo");
     const runsTable = document.getElementById("runsTable");
     const areasSummary = document.getElementById("areasSummary");
@@ -865,7 +877,7 @@
 
     function getMetricValue(point, key) {
       if (key === "projects_count") {
-        return point.projects.length;
+        return new Set(readProjectNames(point)).size;
       }
       return asNumber(point.metrics[key]);
     }
@@ -886,19 +898,31 @@
       return { mapped, line, area };
     }
 
-    function renderKpis(points) {
+    function renderKpis(points, metricKey) {
       const projectSet = new Set();
       let commits = 0;
       let files = 0;
+      let metricTotal = 0;
+      let metricPeak = 0;
+      const metricMeta = METRICS[metricKey] || { label: "Metric" };
       points.forEach((point) => {
         commits += point.metrics.commits;
         files += point.metrics.files_changed;
         point.projects.forEach((name) => projectSet.add(name));
+        const metricValue = getMetricValue(point, metricKey);
+        metricTotal += metricValue;
+        if (metricValue > metricPeak) {
+          metricPeak = metricValue;
+        }
       });
       kpiRuns.textContent = formatNum(points.length);
       kpiCommits.textContent = formatNum(commits);
       kpiFiles.textContent = formatNum(files);
       kpiProjects.textContent = formatNum(projectSet.size);
+      kpiMetricTotalLabel.textContent = `Total ${metricMeta.label}`;
+      kpiMetricTotal.textContent = formatNum(metricTotal);
+      kpiMetricPeakLabel.textContent = `${metricMeta.label} Peak`;
+      kpiMetricPeak.textContent = formatNum(metricPeak);
     }
 
     function aggregateTechnicalAreas(points) {
@@ -1284,8 +1308,9 @@
         chart.appendChild(circle);
       });
 
+      const totalValue = dataset.reduce((sum, point) => sum + point.value, 0);
       const peak = dataset.reduce((best, current) => (current.value > best.value ? current : best), dataset[0]);
-      chartHint.textContent = `${metricMeta.label} peak: ${formatNum(peak.value)} (${formatDateUtc(peak.generated_at_utc)})`;
+      chartHint.textContent = `${metricMeta.label} total (filtered runs): ${formatNum(totalValue)} | peak run: ${formatNum(peak.value)} (${formatDateUtc(peak.generated_at_utc)})`;
     }
 
     function normalizeRun(entry, run) {
@@ -1420,7 +1445,7 @@
       } else if (!selectedPoint || !filtered.some((point) => sameRun(point, selectedPoint))) {
         selectedPoint = filtered[filtered.length - 1];
       }
-      renderKpis(filtered);
+      renderKpis(filtered, metricKey);
       renderSummaryBlocks(filtered);
       renderTable(filtered);
       renderChart(filtered, metricKey);
