@@ -1,0 +1,183 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-23T17:47:29Z",
+    "since_utc": "2026-02-23T17:44:27Z",
+    "iteration_key": "2026-02-23:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 4,
+        "commits": 4,
+        "files_changed": 126,
+        "insertions": 29237,
+        "deletions": 3840,
+        "binary_files": 1
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 93
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 19
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 6
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 5
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 97,
+            "insertions": 26008,
+            "deletions": 3697,
+            "binary_files": 1,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 97 files (+26008/-3697).",
+            "proof_ids": [
+                "proof-2026-02-23-1-keymaker-commits-1",
+                "proof-2026-02-23-1-keymaker-files-97",
+                "proof-2026-02-23-1-keymaker-surface-ts",
+                "proof-2026-02-23-1-keymaker-surface-json",
+                "proof-2026-02-23-1-keymaker-surface-mjs"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 92
+                },
+                {
+                    "name": "json",
+                    "count": 2
+                },
+                {
+                    "name": "mjs",
+                    "count": 1
+                },
+                {
+                    "name": "vue",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 25,
+            "insertions": 3224,
+            "deletions": 139,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 25 files (+3224/-139).",
+            "proof_ids": [
+                "proof-2026-02-23-1-architect-commits-1",
+                "proof-2026-02-23-1-architect-files-25",
+                "proof-2026-02-23-1-architect-surface-php",
+                "proof-2026-02-23-1-architect-surface-yml",
+                "proof-2026-02-23-1-architect-surface-example"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 19
+                },
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                },
+                {
+                    "name": "fixtures",
+                    "count": 1
+                },
+                {
+                    "name": "testing",
+                    "count": 1
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 3,
+            "insertions": 3,
+            "deletions": 3,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 3 files (+3/-3).",
+            "proof_ids": [
+                "proof-2026-02-23-1-neo-commits-1",
+                "proof-2026-02-23-1-neo-files-3",
+                "proof-2026-02-23-1-neo-surface-none"
+            ],
+            "confidence": 0.55,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "code_name": "Niobe",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 2,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+2/-1).",
+            "proof_ids": [
+                "proof-2026-02-23-1-niobe-commits-1",
+                "proof-2026-02-23-1-niobe-files-1",
+                "proof-2026-02-23-1-niobe-surface-none"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
