@@ -1,0 +1,178 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-26T13:02:39Z",
+    "since_utc": "2026-02-26T12:54:32Z",
+    "iteration_key": "2026-02-26:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 3,
+        "commits": 3,
+        "files_changed": 216,
+        "insertions": 13361,
+        "deletions": 4455,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 158
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 25
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 23
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 5
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 3
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 177,
+            "insertions": 11017,
+            "deletions": 4238,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 177 files (+11017/-4238).",
+            "proof_ids": [
+                "proof-2026-02-26-1-keymaker-commits-1",
+                "proof-2026-02-26-1-keymaker-files-177",
+                "proof-2026-02-26-1-keymaker-surface-ts",
+                "proof-2026-02-26-1-keymaker-surface-json"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 155
+                },
+                {
+                    "name": "ts}",
+                    "count": 12
+                },
+                {
+                    "name": "json",
+                    "count": 5
+                },
+                {
+                    "name": "vue",
+                    "count": 3
+                },
+                {
+                    "name": "mjs",
+                    "count": 1
+                },
+                {
+                    "name": "cjs",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 37,
+            "insertions": 2260,
+            "deletions": 205,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 37 files (+2260/-205).",
+            "proof_ids": [
+                "proof-2026-02-26-1-architect-commits-1",
+                "proof-2026-02-26-1-architect-files-37",
+                "proof-2026-02-26-1-architect-surface-php",
+                "proof-2026-02-26-1-architect-surface-yml",
+                "proof-2026-02-26-1-architect-surface-md"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 25
+                },
+                {
+                    "name": "yml",
+                    "count": 5
+                },
+                {
+                    "name": "md",
+                    "count": 2
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                },
+                {
+                    "name": "fixtures",
+                    "count": 1
+                },
+                {
+                    "name": "testing",
+                    "count": 1
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                },
+                {
+                    "name": "xml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 2,
+            "insertions": 84,
+            "deletions": 12,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 2 files (+84/-12).",
+            "proof_ids": [
+                "proof-2026-02-26-1-neo-commits-1",
+                "proof-2026-02-26-1-neo-files-2",
+                "proof-2026-02-26-1-neo-surface-none"
+            ],
+            "confidence": 0.54,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 2
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
