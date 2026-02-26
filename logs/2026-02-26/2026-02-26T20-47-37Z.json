@@ -1,0 +1,133 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-26T20:47:37Z",
+    "since_utc": "2026-02-26T20:43:34Z",
+    "iteration_key": "2026-02-26:3",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 3,
+        "commits": 3,
+        "files_changed": 65,
+        "insertions": 873,
+        "deletions": 341,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 31
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 28
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 4
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 2
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 36,
+            "insertions": 282,
+            "deletions": 223,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 36 files (+282/-223).",
+            "proof_ids": [
+                "proof-2026-02-26-3-keymaker-commits-1",
+                "proof-2026-02-26-3-keymaker-files-36",
+                "proof-2026-02-26-3-keymaker-surface-vue",
+                "proof-2026-02-26-3-keymaker-surface-ts",
+                "proof-2026-02-26-3-keymaker-surface-md"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "vue",
+                    "count": 25
+                },
+                {
+                    "name": "ts",
+                    "count": 6
+                },
+                {
+                    "name": "md",
+                    "count": 3
+                },
+                {
+                    "name": "json",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 28,
+            "insertions": 416,
+            "deletions": 118,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 28 files (+416/-118).",
+            "proof_ids": [
+                "proof-2026-02-26-3-architect-commits-1",
+                "proof-2026-02-26-3-architect-files-28",
+                "proof-2026-02-26-3-architect-surface-php"
+            ],
+            "confidence": 0.72,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 28
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 175,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 1 commits and 1 files (+175/-0).",
+            "proof_ids": [
+                "proof-2026-02-26-3-neo-commits-1",
+                "proof-2026-02-26-3-neo-files-1",
+                "proof-2026-02-26-3-neo-surface-txt"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "txt",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
