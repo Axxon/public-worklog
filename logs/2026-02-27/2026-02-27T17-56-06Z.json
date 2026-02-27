@@ -1,0 +1,113 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-02-27T17:56:05Z",
+    "since_utc": "2026-02-27T17:50:26Z",
+    "iteration_key": "2026-02-27:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 2,
+        "commits": 2,
+        "files_changed": 34,
+        "insertions": 3009,
+        "deletions": 817,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 15
+        },
+        {
+            "name": "backend API and service logic",
+            "count": 10
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 5
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 4
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 24,
+            "insertions": 1852,
+            "deletions": 687,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 1 commits and 24 files (+1852/-687).",
+            "proof_ids": [
+                "proof-2026-02-27-1-keymaker-commits-1",
+                "proof-2026-02-27-1-keymaker-files-24",
+                "proof-2026-02-27-1-keymaker-surface-ts",
+                "proof-2026-02-27-1-keymaker-surface-md",
+                "proof-2026-02-27-1-keymaker-surface-json"
+            ],
+            "confidence": 0.78,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 14
+                },
+                {
+                    "name": "md",
+                    "count": 5
+                },
+                {
+                    "name": "json",
+                    "count": 3
+                },
+                {
+                    "name": "vue",
+                    "count": 1
+                },
+                {
+                    "name": "cjs",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 10,
+            "insertions": 1157,
+            "deletions": 130,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 1 commits and 10 files (+1157/-130).",
+            "proof_ids": [
+                "proof-2026-02-27-1-architect-commits-1",
+                "proof-2026-02-27-1-architect-files-10",
+                "proof-2026-02-27-1-architect-surface-php"
+            ],
+            "confidence": 0.6,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 10
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
