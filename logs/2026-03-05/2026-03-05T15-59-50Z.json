@@ -1,0 +1,280 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-03-05T15:59:50Z",
+    "since_utc": "2026-03-05T15:55:40Z",
+    "iteration_key": "2026-03-05:2",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 8,
+        "commits": 8,
+        "files_changed": 35,
+        "insertions": 1153,
+        "deletions": 99,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "automation and delivery workflow",
+            "count": 18
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 10
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 3
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 3
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 20,
+            "insertions": 776,
+            "deletions": 94,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 20 files (+776/-94).",
+            "proof_ids": [
+                "proof-2026-03-05-2-neo-commits-1",
+                "proof-2026-03-05-2-neo-files-20",
+                "proof-2026-03-05-2-neo-surface-none",
+                "proof-2026-03-05-2-neo-surface-sh",
+                "proof-2026-03-05-2-neo-surface-yml"
+            ],
+            "confidence": 0.75,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 10
+                },
+                {
+                    "name": "sh",
+                    "count": 5
+                },
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "md",
+                    "count": 2
+                },
+                {
+                    "name": "json",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Architect",
+            "commits": 1,
+            "files_changed": 5,
+            "insertions": 62,
+            "deletions": 4,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 5 files (+62/-4).",
+            "proof_ids": [
+                "proof-2026-03-05-2-architect-commits-1",
+                "proof-2026-03-05-2-architect-files-5",
+                "proof-2026-03-05-2-architect-surface-yml",
+                "proof-2026-03-05-2-architect-surface-example"
+            ],
+            "confidence": 0.58,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 4
+                },
+                {
+                    "name": "example",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 5,
+            "insertions": 303,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 5 files (+303/-1).",
+            "proof_ids": [
+                "proof-2026-03-05-2-keymaker-commits-1",
+                "proof-2026-03-05-2-keymaker-files-5",
+                "proof-2026-03-05-2-keymaker-surface-yml",
+                "proof-2026-03-05-2-keymaker-surface-vue",
+                "proof-2026-03-05-2-keymaker-surface-cjs"
+            ],
+            "confidence": 0.62,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "vue",
+                    "count": 1
+                },
+                {
+                    "name": "cjs",
+                    "count": 1
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Trinity",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 2,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+2/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-2-trinity-commits-1",
+                "proof-2026-03-05-2-trinity-files-1",
+                "proof-2026-03-05-2-trinity-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Smith",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 3,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+3/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-2-smith-commits-1",
+                "proof-2026-03-05-2-smith-files-1",
+                "proof-2026-03-05-2-smith-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Oracle",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 3,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+3/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-2-oracle-commits-1",
+                "proof-2026-03-05-2-oracle-files-1",
+                "proof-2026-03-05-2-oracle-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Niobe",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 2,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+2/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-2-niobe-commits-1",
+                "proof-2026-03-05-2-niobe-files-1",
+                "proof-2026-03-05-2-niobe-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Ghost",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 2,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+2/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-2-ghost-commits-1",
+                "proof-2026-03-05-2-ghost-files-1",
+                "proof-2026-03-05-2-ghost-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}

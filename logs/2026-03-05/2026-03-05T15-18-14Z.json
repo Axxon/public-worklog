@@ -1,0 +1,147 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-03-05T15:18:14Z",
+    "since_utc": "2026-03-05T15:13:30Z",
+    "iteration_key": "2026-03-05:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 3,
+        "commits": 3,
+        "files_changed": 21,
+        "insertions": 967,
+        "deletions": 92,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 0,
+        "tool_calls": 0,
+        "user_messages": 0,
+        "assistant_messages": 0
+    },
+    "technical_areas": [
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 10
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 7
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 2
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 1
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 1
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Neo",
+            "commits": 1,
+            "files_changed": 15,
+            "insertions": 664,
+            "deletions": 91,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 15 files (+664/-91).",
+            "proof_ids": [
+                "proof-2026-03-05-1-neo-commits-1",
+                "proof-2026-03-05-1-neo-files-15",
+                "proof-2026-03-05-1-neo-surface-none",
+                "proof-2026-03-05-1-neo-surface-sh",
+                "proof-2026-03-05-1-neo-surface-md"
+            ],
+            "confidence": 0.69,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 10
+                },
+                {
+                    "name": "sh",
+                    "count": 4
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 1,
+            "files_changed": 5,
+            "insertions": 302,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 5 files (+302/-1).",
+            "proof_ids": [
+                "proof-2026-03-05-1-keymaker-commits-1",
+                "proof-2026-03-05-1-keymaker-files-5",
+                "proof-2026-03-05-1-keymaker-surface-yml",
+                "proof-2026-03-05-1-keymaker-surface-vue",
+                "proof-2026-03-05-1-keymaker-surface-cjs"
+            ],
+            "confidence": 0.62,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 2
+                },
+                {
+                    "name": "vue",
+                    "count": 1
+                },
+                {
+                    "name": "cjs",
+                    "count": 1
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Trinity",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 1,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "automation and delivery workflow",
+            "problem": "build and backup reliability across scripted workflows",
+            "action": "script hardening, deterministic make targets, and safer orchestration defaults",
+            "outcome": "Reduced integration risk in automation and delivery workflow across 1 commits and 1 files (+1/-0).",
+            "proof_ids": [
+                "proof-2026-03-05-1-trinity-commits-1",
+                "proof-2026-03-05-1-trinity-files-1",
+                "proof-2026-03-05-1-trinity-surface-yml"
+            ],
+            "confidence": 0.53,
+            "extensions": [
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
