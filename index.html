@@ -153,67 +153,6 @@
       line-height: 1.06;
     }
 
-    .chart-panel {
-      margin-top: 14px;
-      padding: 12px 12px 16px;
-      animation: rise 710ms ease-out both;
-    }
-
-    .chart-frame {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(8, 30, 46, 0.72), rgba(5, 16, 28, 0.72));
-    }
-
-    svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      min-height: 320px;
-    }
-
-    .chart-hint {
-      margin-top: 8px;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .tooltip {
-      position: absolute;
-      min-width: 230px;
-      max-width: min(290px, 80vw);
-      background: rgba(7, 15, 26, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.46);
-      pointer-events: none;
-      transform: translate(-50%, calc(-100% - 12px));
-      z-index: 3;
-    }
-
-    .tooltip[hidden] {
-      display: none;
-    }
-
-    .tooltip-title {
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .tooltip-sub {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-bottom: 7px;
-    }
-
-    .tooltip-metric {
-      font-size: 1.02rem;
-      font-weight: 600;
-    }
-
     .table-panel {
       margin-top: 12px;
       overflow: hidden;
@@ -566,18 +505,10 @@
         <div class="kpi-label" id="kpiMetricPeakLabel">Commits Peak</div>
         <div class="kpi-value" id="kpiMetricPeak">0</div>
       </article>
-    </section>
-
-    <section class="panel chart-panel">
-      <div class="chart-frame" id="chartFrame">
-        <svg id="timelineChart" viewBox="0 0 1100 420" role="img" aria-label="Temporal worklog chart"></svg>
-        <aside class="tooltip" id="tooltip" hidden>
-          <div class="tooltip-title" id="tooltipTitle"></div>
-          <div class="tooltip-sub" id="tooltipSub"></div>
-          <div class="tooltip-metric" id="tooltipMetric"></div>
-        </aside>
-      </div>
-      <p class="chart-hint" id="chartHint">Hover or click a data point to inspect one run (values are per run, not cumulative).</p>
+      <article class="panel kpi">
+        <div class="kpi-label">Net Insertions</div>
+        <div class="kpi-value" id="kpiNetInsertions">0</div>
+      </article>
     </section>
 
     <section class="panel summary-panel">
@@ -616,7 +547,7 @@
     <section class="panel detail-panel">
       <div class="detail-head">
         <h2 class="detail-title">Run JSON Details</h2>
-        <div class="detail-meta" id="detailMeta">Click a chart point or a table row.</div>
+        <div class="detail-meta" id="detailMeta">Click a table row.</div>
       </div>
       <div class="detail-grid">
         <article class="detail-card">
@@ -651,13 +582,6 @@
     const windowSelect = document.getElementById("windowSelect");
     const projectSelect = document.getElementById("projectSelect");
     const areaSelect = document.getElementById("areaSelect");
-    const chart = document.getElementById("timelineChart");
-    const chartFrame = document.getElementById("chartFrame");
-    const chartHint = document.getElementById("chartHint");
-    const tooltip = document.getElementById("tooltip");
-    const tooltipTitle = document.getElementById("tooltipTitle");
-    const tooltipSub = document.getElementById("tooltipSub");
-    const tooltipMetric = document.getElementById("tooltipMetric");
     const errorBox = document.getElementById("errorBox");
 
     const kpiRuns = document.getElementById("kpiRuns");
@@ -668,6 +592,7 @@
     const kpiMetricTotal = document.getElementById("kpiMetricTotal");
     const kpiMetricPeakLabel = document.getElementById("kpiMetricPeakLabel");
     const kpiMetricPeak = document.getElementById("kpiMetricPeak");
+    const kpiNetInsertions = document.getElementById("kpiNetInsertions");
     const metaInfo = document.getElementById("metaInfo");
     const runsTable = document.getElementById("runsTable");
     const areasSummary = document.getElementById("areasSummary");
@@ -714,19 +639,6 @@
         hour: "2-digit",
         minute: "2-digit"
       }).format(date) + " UTC";
-    }
-
-    function formatAxisLabel(ts) {
-      const date = new Date(ts);
-      if (Number.isNaN(date.getTime())) {
-        return "-";
-      }
-      return new Intl.DateTimeFormat("en-GB", {
-        timeZone: "UTC",
-        month: "short",
-        day: "2-digit",
-        hour: "2-digit"
-      }).format(date);
     }
 
     function escapeHtml(value) {
@@ -832,21 +744,6 @@
       return "./" + path;
     }
 
-    function createSvg(tag, attrs = {}) {
-      const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
-      Object.entries(attrs).forEach(([key, value]) => {
-        el.setAttribute(key, String(value));
-      });
-      return el;
-    }
-
-    function scale(value, inMin, inMax, outMin, outMax) {
-      if (inMax === inMin) {
-        return (outMin + outMax) / 2;
-      }
-      return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
-    }
-
     function filterPoints(points) {
       const windowDays = windowSelect.value;
       if (windowDays === "all") {
@@ -882,32 +779,20 @@
       return asNumber(point.metrics[key]);
     }
 
-    function buildPath(points, xMin, xMax, yMin, yMax, chartWidth, chartHeight, pad) {
-      const mapped = points.map((point) => {
-        const x = scale(point.ts, xMin, xMax, pad.left, chartWidth - pad.right);
-        const y = scale(point.value, yMin, yMax, chartHeight - pad.bottom, pad.top);
-        return { x, y };
-      });
-      const line = mapped.map((p, idx) => (idx === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`)).join(" ");
-      const area = [
-        line,
-        `L ${mapped[mapped.length - 1].x} ${chartHeight - pad.bottom}`,
-        `L ${mapped[0].x} ${chartHeight - pad.bottom}`,
-        "Z"
-      ].join(" ");
-      return { mapped, line, area };
-    }
-
     function renderKpis(points, metricKey) {
       const projectSet = new Set();
       let commits = 0;
       let files = 0;
+      let insertions = 0;
+      let deletions = 0;
       let metricTotal = 0;
       let metricPeak = 0;
       const metricMeta = METRICS[metricKey] || { label: "Metric" };
       points.forEach((point) => {
         commits += point.metrics.commits;
         files += point.metrics.files_changed;
+        insertions += point.metrics.insertions;
+        deletions += point.metrics.deletions;
         point.projects.forEach((name) => projectSet.add(name));
         const metricValue = getMetricValue(point, metricKey);
         metricTotal += metricValue;
@@ -923,6 +808,7 @@
       kpiMetricTotal.textContent = formatNum(metricTotal);
       kpiMetricPeakLabel.textContent = `${metricMeta.label} Peak`;
       kpiMetricPeak.textContent = formatNum(metricPeak);
+      kpiNetInsertions.textContent = formatNum(insertions - deletions);
     }
 
     function aggregateTechnicalAreas(points) {
@@ -1027,7 +913,7 @@
 
     function renderRunDetails(point) {
       if (!point) {
-        detailMeta.textContent = "Click a chart point or a table row.";
+        detailMeta.textContent = "Click a table row.";
         detailAreas.innerHTML = `<span class="muted">No run selected.</span>`;
         detailProjects.innerHTML = `<span class="muted">No run selected.</span>`;
         return;
@@ -1142,175 +1028,6 @@
         });
         runsTable.appendChild(row);
       });
-    }
-
-    function positionTooltip(event) {
-      const rect = chartFrame.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      tooltip.style.left = `${x}px`;
-      tooltip.style.top = `${y}px`;
-    }
-
-    function bindPointTooltip(circle, point, metricKey) {
-      const metricMeta = METRICS[metricKey];
-      const value = getMetricValue(point, metricKey);
-      const onEnter = (event) => {
-        tooltipTitle.textContent = point.iteration_key || "Worklog run";
-        tooltipSub.textContent = formatDateUtc(point.generated_at_utc);
-        tooltipMetric.textContent = `${metricMeta.label}: ${formatNum(value)}`;
-        tooltip.hidden = false;
-        positionTooltip(event);
-      };
-      const onMove = (event) => {
-        positionTooltip(event);
-      };
-      const onLeave = () => {
-        tooltip.hidden = true;
-      };
-      circle.addEventListener("pointerenter", onEnter);
-      circle.addEventListener("pointermove", onMove);
-      circle.addEventListener("pointerleave", onLeave);
-      circle.addEventListener("click", () => {
-        selectedPoint = point;
-        rerender();
-      });
-      circle.style.cursor = "pointer";
-    }
-
-    function renderChart(points, metricKey) {
-      chart.textContent = "";
-      tooltip.hidden = true;
-      const metricMeta = METRICS[metricKey];
-
-      if (points.length === 0) {
-        chartHint.textContent = "No data available for this time window.";
-        return;
-      }
-
-      const chartWidth = 1100;
-      const chartHeight = 420;
-      const pad = { top: 36, right: 24, bottom: 54, left: 68 };
-      const dataset = points.map((point) => ({ ...point, value: getMetricValue(point, metricKey) }));
-
-      const xMin = dataset[0].ts;
-      const xMax = dataset[dataset.length - 1].ts;
-      const maxValue = Math.max(1, ...dataset.map((point) => point.value));
-      const yMax = maxValue * 1.15;
-      const yMin = 0;
-
-      const defs = createSvg("defs");
-      const gradient = createSvg("linearGradient", { id: "areaGradient", x1: "0%", y1: "0%", x2: "0%", y2: "100%" });
-      gradient.appendChild(createSvg("stop", { offset: "0%", "stop-color": metricMeta.color, "stop-opacity": "0.35" }));
-      gradient.appendChild(createSvg("stop", { offset: "100%", "stop-color": metricMeta.color, "stop-opacity": "0.02" }));
-      defs.appendChild(gradient);
-      chart.appendChild(defs);
-
-      for (let i = 0; i < 5; i++) {
-        const yVal = scale(i, 0, 4, yMin, yMax);
-        const y = scale(yVal, yMin, yMax, chartHeight - pad.bottom, pad.top);
-        const grid = createSvg("line", {
-          x1: pad.left,
-          y1: y,
-          x2: chartWidth - pad.right,
-          y2: y,
-          stroke: "rgba(158,180,204,0.22)",
-          "stroke-dasharray": "3 6",
-          "stroke-width": "1"
-        });
-        const label = createSvg("text", {
-          x: pad.left - 10,
-          y: y + 4,
-          "text-anchor": "end",
-          fill: "rgba(232,242,255,0.75)",
-          "font-size": "12"
-        });
-        label.textContent = formatNum(yVal);
-        chart.appendChild(grid);
-        chart.appendChild(label);
-      }
-
-      const tickCount = Math.min(6, dataset.length);
-      for (let i = 0; i < tickCount; i++) {
-        const ratio = tickCount === 1 ? 0 : i / (tickCount - 1);
-        const ts = xMin + (xMax - xMin) * ratio;
-        const x = scale(ts, xMin, xMax, pad.left, chartWidth - pad.right);
-        const tick = createSvg("line", {
-          x1: x,
-          y1: chartHeight - pad.bottom,
-          x2: x,
-          y2: chartHeight - pad.bottom + 7,
-          stroke: "rgba(158,180,204,0.32)"
-        });
-        const text = createSvg("text", {
-          x: x,
-          y: chartHeight - pad.bottom + 21,
-          "text-anchor": "middle",
-          fill: "rgba(232,242,255,0.75)",
-          "font-size": "12"
-        });
-        text.textContent = formatAxisLabel(ts);
-        chart.appendChild(tick);
-        chart.appendChild(text);
-      }
-
-      const { mapped, line, area } = buildPath(dataset, xMin, xMax, yMin, yMax, chartWidth, chartHeight, pad);
-
-      const areaPath = createSvg("path", {
-        d: area,
-        fill: "url(#areaGradient)"
-      });
-      chart.appendChild(areaPath);
-
-      const linePath = createSvg("path", {
-        d: line,
-        fill: "none",
-        stroke: metricMeta.color,
-        "stroke-width": "3",
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round"
-      });
-      let lengthEstimate = 2400;
-      if (typeof linePath.getTotalLength === "function") {
-        try {
-          lengthEstimate = linePath.getTotalLength();
-        } catch (_) {
-          lengthEstimate = 2400;
-        }
-      }
-      linePath.style.strokeDasharray = String(lengthEstimate);
-      linePath.style.strokeDashoffset = String(lengthEstimate);
-      chart.appendChild(linePath);
-      if (typeof linePath.animate === "function") {
-        linePath.animate(
-          [
-            { strokeDashoffset: lengthEstimate },
-            { strokeDashoffset: 0 }
-          ],
-          { duration: 900, easing: "ease-out", fill: "forwards" }
-        );
-      } else {
-        linePath.style.strokeDashoffset = "0";
-      }
-
-      mapped.forEach((mappedPoint, index) => {
-        const point = dataset[index];
-        const isSelected = sameRun(point, selectedPoint);
-        const circle = createSvg("circle", {
-          cx: mappedPoint.x,
-          cy: mappedPoint.y,
-          r: isSelected ? "7" : "5",
-          fill: metricMeta.color,
-          stroke: "#071520",
-          "stroke-width": isSelected ? "3" : "2"
-        });
-        bindPointTooltip(circle, point, metricKey);
-        chart.appendChild(circle);
-      });
-
-      const totalValue = dataset.reduce((sum, point) => sum + point.value, 0);
-      const peak = dataset.reduce((best, current) => (current.value > best.value ? current : best), dataset[0]);
-      chartHint.textContent = `${metricMeta.label} total (filtered runs): ${formatNum(totalValue)} | peak run: ${formatNum(peak.value)} (${formatDateUtc(peak.generated_at_utc)})`;
     }
 
     function normalizeRun(entry, run) {
@@ -1448,7 +1165,6 @@
       renderKpis(filtered, metricKey);
       renderSummaryBlocks(filtered);
       renderTable(filtered);
-      renderChart(filtered, metricKey);
       renderRunDetails(selectedPoint);
     }
 
