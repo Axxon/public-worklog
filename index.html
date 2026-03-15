@@ -772,11 +772,63 @@
       });
     }
 
-    function getMetricValue(point, key) {
-      if (key === "projects_count") {
-        return new Set(readProjectNames(point)).size;
+    function getMatchingProjectDetails(point) {
+      if (!point || point.project_details.length === 0) {
+        return [];
       }
-      return asNumber(point.metrics[key]);
+      const selectedProject = projectSelect.value;
+      const selectedArea = areaSelect.value;
+      return point.project_details.filter((project) => {
+        const projectOk = selectedProject === "all" || project.code_name === selectedProject;
+        const areaOk = selectedArea === "all" || project.dominant_area === selectedArea;
+        return projectOk && areaOk;
+      });
+    }
+
+    function getScopedMetrics(point) {
+      const selectedProject = projectSelect.value;
+      const selectedArea = areaSelect.value;
+      if ((selectedProject === "all" && selectedArea === "all") || point.project_details.length === 0) {
+        return point.metrics;
+      }
+
+      const matchedProjects = getMatchingProjectDetails(point);
+      if (matchedProjects.length === 0) {
+        return {
+          repos_touched: 0,
+          commits: 0,
+          files_changed: 0,
+          insertions: 0,
+          deletions: 0,
+          binary_files: 0
+        };
+      }
+
+      return matchedProjects.reduce((acc, project) => {
+        acc.commits += asNumber(project.commits);
+        acc.files_changed += asNumber(project.files_changed);
+        acc.insertions += asNumber(project.insertions);
+        acc.deletions += asNumber(project.deletions);
+        return acc;
+      }, {
+        repos_touched: 0,
+        commits: 0,
+        files_changed: 0,
+        insertions: 0,
+        deletions: 0,
+        binary_files: 0
+      });
+    }
+
+    function getMetricValue(point, key) {
+      const scopedMetrics = getScopedMetrics(point);
+      if (key === "projects_count") {
+        if (projectSelect.value === "all" && areaSelect.value === "all") {
+          return new Set(readProjectNames(point)).size;
+        }
+        return getMatchingProjectDetails(point).length;
+      }
+      return asNumber(scopedMetrics[key]);
     }
 
     function renderKpis(points, metricKey) {
@@ -789,11 +841,17 @@
       let metricPeak = 0;
       const metricMeta = METRICS[metricKey] || { label: "Metric" };
       points.forEach((point) => {
-        commits += point.metrics.commits;
-        files += point.metrics.files_changed;
-        insertions += point.metrics.insertions;
-        deletions += point.metrics.deletions;
-        point.projects.forEach((name) => projectSet.add(name));
+        const scopedMetrics = getScopedMetrics(point);
+        commits += scopedMetrics.commits;
+        files += scopedMetrics.files_changed;
+        insertions += scopedMetrics.insertions;
+        deletions += scopedMetrics.deletions;
+        const scopedProjects = getMatchingProjectDetails(point);
+        if (scopedProjects.length > 0 && (projectSelect.value !== "all" || areaSelect.value !== "all")) {
+          scopedProjects.forEach((project) => projectSet.add(project.code_name));
+        } else {
+          point.projects.forEach((name) => projectSet.add(name));
+        }
         const metricValue = getMetricValue(point, metricKey);
         metricTotal += metricValue;
         if (metricValue > metricPeak) {
