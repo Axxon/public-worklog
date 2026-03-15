@@ -1,0 +1,420 @@
+{
+    "schema_version": "1.1.0",
+    "generated_at_utc": "2026-03-15T09:07:17Z",
+    "since_utc": "2026-03-05T16:00:00Z",
+    "iteration_key": "2026-03-15:1",
+    "sanitized": true,
+    "totals": {
+        "repos_touched": 9,
+        "commits": 662,
+        "files_changed": 3128,
+        "insertions": 189650,
+        "deletions": 63570,
+        "binary_files": 0
+    },
+    "codex_sessions": {
+        "captured": 631,
+        "tool_calls": 40075,
+        "user_messages": 2514,
+        "assistant_messages": 13289
+    },
+    "technical_areas": [
+        {
+            "name": "backend API and service logic",
+            "count": 1554
+        },
+        {
+            "name": "technical documentation and governance",
+            "count": 493
+        },
+        {
+            "name": "cross-stack source maintenance",
+            "count": 461
+        },
+        {
+            "name": "frontend behavior and layout reliability",
+            "count": 408
+        },
+        {
+            "name": "cross-stack tooling and configuration",
+            "count": 122
+        },
+        {
+            "name": "automation and delivery workflow",
+            "count": 90
+        }
+    ],
+    "projects": [
+        {
+            "code_name": "Architect",
+            "commits": 460,
+            "files_changed": 2367,
+            "insertions": 149742,
+            "deletions": 52476,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 460 commits and 2367 files (+149742/-52476).",
+            "proof_ids": [
+                "proof-2026-03-15-1-architect-commits-460",
+                "proof-2026-03-15-1-architect-files-2367",
+                "proof-2026-03-15-1-architect-surface-php",
+                "proof-2026-03-15-1-architect-surface-md",
+                "proof-2026-03-15-1-architect-surface-json"
+            ],
+            "confidence": 0.98,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 1544
+                },
+                {
+                    "name": "md",
+                    "count": 422
+                },
+                {
+                    "name": "json",
+                    "count": 372
+                },
+                {
+                    "name": "yml",
+                    "count": 14
+                },
+                {
+                    "name": "none",
+                    "count": 9
+                },
+                {
+                    "name": "yaml",
+                    "count": 4
+                },
+                {
+                    "name": "lock",
+                    "count": 1
+                },
+                {
+                    "name": "ini",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Keymaker",
+            "commits": 137,
+            "files_changed": 508,
+            "insertions": 24517,
+            "deletions": 4604,
+            "binary_files": 0,
+            "dominant_area": "frontend behavior and layout reliability",
+            "problem": "UI behavior consistency during iterative front-end updates",
+            "action": "component-level adjustments and progressive compatibility checks",
+            "outcome": "Reduced integration risk in frontend behavior and layout reliability across 137 commits and 508 files (+24517/-4604).",
+            "proof_ids": [
+                "proof-2026-03-15-1-keymaker-commits-137",
+                "proof-2026-03-15-1-keymaker-files-508",
+                "proof-2026-03-15-1-keymaker-surface-ts",
+                "proof-2026-03-15-1-keymaker-surface-vue",
+                "proof-2026-03-15-1-keymaker-surface-feature"
+            ],
+            "confidence": 0.98,
+            "extensions": [
+                {
+                    "name": "ts",
+                    "count": 315
+                },
+                {
+                    "name": "vue",
+                    "count": 86
+                },
+                {
+                    "name": "feature",
+                    "count": 57
+                },
+                {
+                    "name": "json",
+                    "count": 16
+                },
+                {
+                    "name": "md",
+                    "count": 15
+                },
+                {
+                    "name": "none",
+                    "count": 8
+                },
+                {
+                    "name": "yml",
+                    "count": 5
+                },
+                {
+                    "name": "cjs",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "code_name": "Neo",
+            "commits": 51,
+            "files_changed": 210,
+            "insertions": 10951,
+            "deletions": 6296,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 51 commits and 210 files (+10951/-6296).",
+            "proof_ids": [
+                "proof-2026-03-15-1-neo-commits-51",
+                "proof-2026-03-15-1-neo-files-210",
+                "proof-2026-03-15-1-neo-surface-none",
+                "proof-2026-03-15-1-neo-surface-sh",
+                "proof-2026-03-15-1-neo-surface-md"
+            ],
+            "confidence": 0.98,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 93
+                },
+                {
+                    "name": "sh",
+                    "count": 51
+                },
+                {
+                    "name": "md",
+                    "count": 46
+                },
+                {
+                    "name": "yml",
+                    "count": 8
+                },
+                {
+                    "name": "txt",
+                    "count": 6
+                },
+                {
+                    "name": "json",
+                    "count": 2
+                },
+                {
+                    "name": "sh}",
+                    "count": 2
+                },
+                {
+                    "name": "tsv",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Smith",
+            "commits": 7,
+            "files_changed": 17,
+            "insertions": 384,
+            "deletions": 148,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 7 commits and 17 files (+384/-148).",
+            "proof_ids": [
+                "proof-2026-03-15-1-smith-commits-7",
+                "proof-2026-03-15-1-smith-files-17",
+                "proof-2026-03-15-1-smith-surface-none",
+                "proof-2026-03-15-1-smith-surface-yml",
+                "proof-2026-03-15-1-smith-surface-ts"
+            ],
+            "confidence": 0.94,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 5
+                },
+                {
+                    "name": "yml",
+                    "count": 4
+                },
+                {
+                    "name": "ts",
+                    "count": 4
+                },
+                {
+                    "name": "json",
+                    "count": 3
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Oracle",
+            "commits": 2,
+            "files_changed": 16,
+            "insertions": 3794,
+            "deletions": 39,
+            "binary_files": 0,
+            "dominant_area": "backend API and service logic",
+            "problem": "API contract consistency under active backend changes",
+            "action": "contract-preserving edits, scoped controller changes, and incremental hardening",
+            "outcome": "Reduced integration risk in backend API and service logic across 2 commits and 16 files (+3794/-39).",
+            "proof_ids": [
+                "proof-2026-03-15-1-oracle-commits-2",
+                "proof-2026-03-15-1-oracle-files-16",
+                "proof-2026-03-15-1-oracle-surface-php",
+                "proof-2026-03-15-1-oracle-surface-none",
+                "proof-2026-03-15-1-oracle-surface-md"
+            ],
+            "confidence": 0.83,
+            "extensions": [
+                {
+                    "name": "php",
+                    "count": 10
+                },
+                {
+                    "name": "none",
+                    "count": 3
+                },
+                {
+                    "name": "md",
+                    "count": 1
+                },
+                {
+                    "name": "lock",
+                    "count": 1
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Trinity",
+            "commits": 2,
+            "files_changed": 5,
+            "insertions": 244,
+            "deletions": 4,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 2 commits and 5 files (+244/-4).",
+            "proof_ids": [
+                "proof-2026-03-15-1-trinity-commits-2",
+                "proof-2026-03-15-1-trinity-files-5",
+                "proof-2026-03-15-1-trinity-surface-md",
+                "proof-2026-03-15-1-trinity-surface-yml",
+                "proof-2026-03-15-1-trinity-surface-json"
+            ],
+            "confidence": 0.74,
+            "extensions": [
+                {
+                    "name": "md",
+                    "count": 1
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                },
+                {
+                    "name": "json",
+                    "count": 1
+                },
+                {
+                    "name": "js",
+                    "count": 1
+                },
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Merovingian",
+            "commits": 1,
+            "files_changed": 3,
+            "insertions": 7,
+            "deletions": 2,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 3 files (+7/-2).",
+            "proof_ids": [
+                "proof-2026-03-15-1-merovingian-commits-1",
+                "proof-2026-03-15-1-merovingian-files-3",
+                "proof-2026-03-15-1-merovingian-surface-none",
+                "proof-2026-03-15-1-merovingian-surface-yml"
+            ],
+            "confidence": 0.64,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 2
+                },
+                {
+                    "name": "yml",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Cypher",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 4,
+            "deletions": 0,
+            "binary_files": 0,
+            "dominant_area": "technical documentation and governance",
+            "problem": "documentation and policy consistency across parallel updates",
+            "action": "structured updates and consistency checks on canonical docs",
+            "outcome": "Reduced integration risk in technical documentation and governance across 1 commits and 1 files (+4/-0).",
+            "proof_ids": [
+                "proof-2026-03-15-1-cypher-commits-1",
+                "proof-2026-03-15-1-cypher-files-1",
+                "proof-2026-03-15-1-cypher-surface-md"
+            ],
+            "confidence": 0.6,
+            "extensions": [
+                {
+                    "name": "md",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "code_name": "Ghost",
+            "commits": 1,
+            "files_changed": 1,
+            "insertions": 7,
+            "deletions": 1,
+            "binary_files": 0,
+            "dominant_area": "cross-stack tooling and configuration",
+            "problem": "cross-stack compatibility across mixed source surfaces",
+            "action": "incremental compatibility updates with regression-risk control",
+            "outcome": "Reduced integration risk in cross-stack tooling and configuration across 1 commits and 1 files (+7/-1).",
+            "proof_ids": [
+                "proof-2026-03-15-1-ghost-commits-1",
+                "proof-2026-03-15-1-ghost-files-1",
+                "proof-2026-03-15-1-ghost-surface-none"
+            ],
+            "confidence": 0.6,
+            "extensions": [
+                {
+                    "name": "none",
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "sanitization_policy": {
+        "repo_names_exposed": false,
+        "file_paths_exposed": false,
+        "endpoints_exposed": false,
+        "product_specific_details_exposed": false
+    }
+}
